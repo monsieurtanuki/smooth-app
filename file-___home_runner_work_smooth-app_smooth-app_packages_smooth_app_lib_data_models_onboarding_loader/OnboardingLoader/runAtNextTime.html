@@ -78,7 +78,8 @@
       await LoadingDialog.run&lt;void&gt;(
         context: context,
         future: _downloadData(),
-        title: &#39;Loading internet data&#39;, &#47;&#47; TODO(monsieurtanuki): localize
+        title: AppLocalizations.of(context)!
+            .onboarding_welcome_loading_dialog_title,
       );
       return;
     case OnboardingPage.NOT_STARTED:
@@ -86,6 +87,7 @@
     case OnboardingPage.HEALTH_CARD_EXAMPLE:
     case OnboardingPage.ECO_CARD_EXAMPLE:
     case OnboardingPage.PREFERENCES_PAGE:
+    case OnboardingPage.CONSENT_PAGE:
       return;
     case OnboardingPage.ONBOARDING_COMPLETE:
       await _unloadData();
