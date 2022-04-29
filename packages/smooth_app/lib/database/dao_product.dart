@@ -47,6 +47,15 @@ class DaoProduct extends AbstractDao {
     return result;
   }
 
+  Future<List<String>> getAllBarcodes() async {
+    final LazyBox<Product> box = _getBox();
+    final List<String> result = <String>[];
+    for (final dynamic key in box.keys) {
+      result.add(key.toString());
+    }
+    return result;
+  }
+
   Future<void> put(final Product product) async => putAll(<Product>[product]);
 
   Future<void> putAll(final Iterable<Product> products) async {

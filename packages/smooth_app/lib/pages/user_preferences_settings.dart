@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:openfoodfacts/model/SearchResult.dart';
+import 'package:openfoodfacts/openfoodfacts.dart';
+import 'package:openfoodfacts/utils/ProductListQueryConfiguration.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:provider/provider.dart';
 import 'package:smooth_app/data_models/user_preferences.dart';
+import 'package:smooth_app/database/dao_product.dart';
+import 'package:smooth_app/database/local_database.dart';
+import 'package:smooth_app/database/product_query.dart';
 import 'package:smooth_app/generic_lib/buttons/smooth_action_button.dart';
 import 'package:smooth_app/generic_lib/design_constants.dart';
 import 'package:smooth_app/generic_lib/dialogs/smooth_alert_dialog.dart';
+import 'package:smooth_app/generic_lib/loading_dialog.dart';
 import 'package:smooth_app/generic_lib/widgets/smooth_list_tile.dart';
 import 'package:smooth_app/helpers/launch_url_helper.dart';
 import 'package:smooth_app/pages/abstract_user_preferences.dart';
@@ -226,6 +234,13 @@ class UserPreferencesSettings extends AbstractUserPreferences {
             builder: (BuildContext context) => FaqHandleView(),
           ),
         ),
+        ListTile(
+          title: Text('Refresh all products'), // TODO(monsieurtanuki): localize
+          onTap: () async => LoadingDialog.run<bool>(
+            context: context,
+            future: _refreshProducts(),
+          ),
+        ),
       ];
 
   Widget _getColorButton(
@@ -251,4 +266,29 @@ class UserPreferencesSettings extends AbstractUserPreferences {
           ),
         ),
       );
+
+  Future<bool> _refreshProducts() async {
+    final LocalDatabase localDatabase = context.read<LocalDatabase>();
+    final List<String> barcodes =
+        await DaoProduct(localDatabase).getAllBarcodes();
+    if (barcodes.isEmpty) {
+      return false;
+    }
+    final SearchResult searchResult = await OpenFoodAPIClient.getProductList(
+      ProductQuery.getUser(),
+      ProductListQueryConfiguration(
+        barcodes,
+        fields: ProductQuery.fields,
+        language: ProductQuery.getLanguage(),
+        country: ProductQuery.getCountry(),
+      ),
+    );
+    final List<Product>? freshProducts = searchResult.products;
+    if (freshProducts == null) {
+      return false;
+    }
+    await DaoProduct(localDatabase).putAll(freshProducts);
+// should we refresh product lists too? but how?
+    return true;
+  }
 }
