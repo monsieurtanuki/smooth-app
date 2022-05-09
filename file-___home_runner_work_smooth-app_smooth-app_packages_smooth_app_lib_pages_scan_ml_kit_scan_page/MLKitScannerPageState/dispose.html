@@ -73,7 +73,7 @@
 void dispose() {
   &#47;&#47; &#47;!\ This call is a Future, which may leads to some issues.
   &#47;&#47; This should be handled by [_restartCameraIfNecessary]
-  _stopImageStream();
+  _stopImageStream(fromDispose: true);
   super.dispose();
 }</code></pre>
 </section>
@@ -128,6 +128,8 @@ void dispose() {
 
 
 
+    <li class="section-title"><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_pages_scan_ml_kit_scan_page/MLKitScannerPageState-class.html#constants">Constants</a></li>
+    <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_pages_scan_ml_kit_scan_page/MLKitScannerPageState/postFrameCallbackStandardDelay-constant.html">postFrameCallbackStandardDelay</a></li>
 </ol>
 
   </div><!--/.sidebar-offcanvas-->
