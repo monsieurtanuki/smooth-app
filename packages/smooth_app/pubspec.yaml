@@ -41,7 +41,7 @@ dependencies:
   flutter_isolate: ^2.0.2
   rubber: ^1.0.1
   sentry_flutter: ^6.5.1 # careful with upgrading cf: https://github.com/openfoodfacts/smooth-app/issues/1300
-  url_launcher: ^6.1.0
+  url_launcher: ^6.1.2
   visibility_detector: ^0.2.2
   camera: ^0.9.4+21
   percent_indicator: ^4.0.1
