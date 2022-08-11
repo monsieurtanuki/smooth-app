@@ -219,13 +219,30 @@ class _ProductQueryPageState extends State<ProductQueryPage>
                 return _getTopMessagesCard();
               }
               index--;
-              // TODO(monsieurtanuki): maybe call it earlier, like for first unknown page index - 5?
-              if (index >= _model.displayBarcodes.length) {
-                _downloadNextPage();
+              const int numberOfPagesBeforeDownload = 1;
+              const int numberOfDownloadingPages = 1;
+              // if not all products are already downloaded
+              if (_model.supplier.partialProductList.totalSize >
+                  _model.displayBarcodes.length) {
+                if (index >=
+                    _model.displayBarcodes.length -
+                        numberOfPagesBeforeDownload *
+                            _model.supplier.productQuery.pageSize) {
+                  _downloadNextPage();
+                }
+              }
+              if (index >=
+                  _model.displayBarcodes.length +
+                      numberOfDownloadingPages *
+                          _model.supplier.productQuery.pageSize) {
+                return const SmoothProductCardTemplate(
+                  message: 'Will be loaded later',
+                );
               }
               if (index >= _model.displayBarcodes.length) {
-                // TODO(monsieurtanuki): maybe display something specific for data being downloaded (the next page) and unknown data (beyond next page)
-                return const SmoothProductCardTemplate();
+                return SmoothProductCardTemplate(
+                  message: _loadingNext ? 'Loading...' : 'Could not load',
+                );
               }
               return Padding(
                 padding: const EdgeInsets.symmetric(
