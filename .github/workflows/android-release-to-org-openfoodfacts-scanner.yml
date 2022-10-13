@@ -74,7 +74,7 @@ jobs:
       # We are using the android version code here to have the version codes from iOS and android in sync 
       # in order for Sentry and other tools to work properly
       - name: Bump version
-        uses: maierj/fastlane-action@v2.2.1
+        uses: maierj/fastlane-action@v2.3.0
         with:
           lane: setVersion
           subdirectory: packages/smooth_app/android
@@ -91,7 +91,7 @@ jobs:
          SIGN_KEY_PASSWORD: ${{ secrets.SIGN_KEY_PASSWORD }}
 
       - name: Release AAB
-        uses: maierj/fastlane-action@v2.2.1
+        uses: maierj/fastlane-action@v2.3.0
         with:
           lane: release
           subdirectory: packages/smooth_app/android
