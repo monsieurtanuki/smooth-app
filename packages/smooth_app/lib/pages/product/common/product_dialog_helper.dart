@@ -60,6 +60,7 @@ class ProductDialogHelper {
                 context,
                 MaterialPageRoute<void>(
                   builder: (BuildContext context) => AddNewProductPage(barcode),
+                  fullscreenDialog: true,
                 ),
               ),
             ),

@@ -88,11 +88,6 @@ class _AddNewProductPageState extends State<AddNewProductPage> {
         title: Text(appLocalizations.new_product),
         automaticallyImplyLeading: empty,
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () async => Navigator.maybePop(context),
-        label: Text(appLocalizations.finish),
-        icon: const Icon(Icons.done),
-      ),
       body: Padding(
         padding: const EdgeInsetsDirectional.only(
           top: VERY_LARGE_SPACE,
@@ -204,7 +199,7 @@ class _AddNewProductPageState extends State<AddNewProductPage> {
       );
 
   Widget _buildNutritionInputButton() {
-    // if the nutrition image is null, ie no image , we return nothing
+    // if the nutrition image is null, ie no image, we return nothing
     if (_product.imageNutritionUrl == null) {
       return const SizedBox();
     }
