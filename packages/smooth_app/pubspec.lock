@@ -1028,10 +1028,10 @@ packages:
     dependency: "direct main"
     description:
       name: matomo_tracker
-      sha256: "9c4bfa031191655b09d757c35b9ffeabff2a267a982ebd385b8dff0556d9e50f"
+      sha256: b7950a0d8e8a8533e451b54de8ab1005bd72af6a209e198a3b8cd58ff106ff46
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.0-dev.2"
+    version: "5.0.0+1"
   meta:
     dependency: transitive
     description:
@@ -1117,10 +1117,10 @@ packages:
     dependency: "direct main"
     description:
       name: package_info_plus
-      sha256: "2c582551839386fa7ddbc7770658be7c0f87f388a4bff72066478f597c34d17f"
+      sha256: a75164ade98cb7d24cfd0a13c6408927c6b217fa60dee5a7ff5c116a58f28918
       url: "https://pub.dev"
     source: hosted
-    version: "7.0.0"
+    version: "8.0.2"
   package_info_plus_platform_interface:
     dependency: transitive
     description:
