@@ -205,6 +205,19 @@
 
 </dd>
 
+        <dt id="getProductTypes" class="callable">
+  <span class="name"><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_database_dao_product/DaoProduct/getProductTypes.html">getProductTypes</a></span><span class="signature">(<wbr><span class="parameter" id="getProductTypes-param-barcodes"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">barcodes</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter">dynamic</span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the local products split by product type.
+  
+
+</dd>
+
         <dt id="getTableName" class="callable">
   <span class="name"><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_database_dao_product/DaoProduct/getTableName.html">getTableName</a></span><span class="signature">(<wbr>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
@@ -219,7 +232,7 @@
 </dd>
 
         <dt id="getTopProductsToTranslate" class="callable">
-  <span class="name"><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_database_dao_product/DaoProduct/getTopProductsToTranslate.html">getTopProductsToTranslate</a></span><span class="signature">(<wbr><span class="parameter" id="getTopProductsToTranslate-param-language"><span class="type-annotation">dynamic</span> <span class="parameter-name">language</span>, </span><span class="parameter" id="getTopProductsToTranslate-param-limit">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">limit</span>, </span><span class="parameter" id="getTopProductsToTranslate-param-excludeBarcodes"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">excludeBarcodes</span>}</span>)
+  <span class="name"><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_database_dao_product/DaoProduct/getTopProductsToTranslate.html">getTopProductsToTranslate</a></span><span class="signature">(<wbr><span class="parameter" id="getTopProductsToTranslate-param-language"><span class="type-annotation">dynamic</span> <span class="parameter-name">language</span>, </span><span class="parameter" id="getTopProductsToTranslate-param-limit">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">limit</span>, </span><span class="parameter" id="getTopProductsToTranslate-param-excludeBarcodes"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">excludeBarcodes</span>, </span><span class="parameter" id="getTopProductsToTranslate-param-productType"><span>required</span> <span class="type-annotation">dynamic</span> <span class="parameter-name">productType</span>}</span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span>
   </span>
   
@@ -233,7 +246,7 @@
 
         <dt id="getTotalNoOfProducts" class="callable">
   <span class="name"><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_database_dao_product/DaoProduct/getTotalNoOfProducts.html">getTotalNoOfProducts</a></span><span class="signature">(<wbr>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter">dynamic</span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span></span>&gt;</span></span>
   </span>
   
 
@@ -292,6 +305,19 @@
 </dt>
 <dd>
   Replaces products in database
+  
+
+</dd>
+
+        <dt id="splitAllProducts" class="callable">
+  <span class="name"><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_database_dao_product/DaoProduct/splitAllProducts.html">splitAllProducts</a></span><span class="signature">(<wbr><span class="parameter" id="splitAllProducts-param-splitFunction"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">splitFunction</span>(<span class="parameter" id="param-"><span class="type-annotation">dynamic</span></span>)</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>&gt;</span></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns all the local products split by a function.
   
 
 </dd>
@@ -409,6 +435,7 @@
     <li><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_database_dao_product/DaoProduct/getDeleteWhere.html">getDeleteWhere</a></li>
     <li><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_database_dao_product/DaoProduct/getEstimatedTotalSizeInMB.html">getEstimatedTotalSizeInMB</a></li>
     <li><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_database_dao_product/DaoProduct/getInsertColumns.html">getInsertColumns</a></li>
+    <li><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_database_dao_product/DaoProduct/getProductTypes.html">getProductTypes</a></li>
     <li><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_database_dao_product/DaoProduct/getTableName.html">getTableName</a></li>
     <li><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_database_dao_product/DaoProduct/getTopProductsToTranslate.html">getTopProductsToTranslate</a></li>
     <li><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_database_dao_product/DaoProduct/getTotalNoOfProducts.html">getTotalNoOfProducts</a></li>
@@ -416,6 +443,7 @@
     <li><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_database_dao_product/DaoProduct/printStats.html">printStats</a></li>
     <li><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_database_dao_product/DaoProduct/put.html">put</a></li>
     <li><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_database_dao_product/DaoProduct/putAll.html">putAll</a></li>
+    <li><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_database_dao_product/DaoProduct/splitAllProducts.html">splitAllProducts</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
 
     <li class="section-title inherited"><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_database_dao_product/DaoProduct-class.html#operators">Operators</a></li>

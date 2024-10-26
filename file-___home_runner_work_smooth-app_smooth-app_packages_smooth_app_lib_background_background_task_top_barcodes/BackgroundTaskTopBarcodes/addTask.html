@@ -57,6 +57,7 @@
 <li><span class="parameter" id="addTask-param-pageSize"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">pageSize</span>, </span></li>
 <li><span class="parameter" id="addTask-param-totalSize"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">totalSize</span>, </span></li>
 <li><span class="parameter" id="addTask-param-soFarSize"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">soFarSize</span>, </span></li>
+<li><span class="parameter" id="addTask-param-productType"><span>required</span> <span class="type-annotation">dynamic</span> <span class="parameter-name">productType</span>, </span></li>
 <li><span class="parameter" id="addTask-param-pageNumber"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">pageNumber</span> = <span class="default-value">1</span>}</span></li>
 </ol>)
 
@@ -75,12 +76,14 @@
   required final int pageSize,
   required final int totalSize,
   required final int soFarSize,
+  required final ProductType productType,
   final int pageNumber = 1,
 }) async {
   final String uniqueId = await _operationType.getNewKey(
     localDatabase,
     totalSize: totalSize,
     soFarSize: soFarSize,
+    productType: productType,
   );
   final BackgroundTask task = _getNewTask(
     uniqueId,
@@ -88,6 +91,7 @@
     pageSize,
     totalSize,
     pageNumber,
+    productType,
   );
   await task.addToManager(localDatabase);
 }</code></pre>

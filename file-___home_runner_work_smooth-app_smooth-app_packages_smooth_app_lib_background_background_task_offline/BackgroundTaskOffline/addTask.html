@@ -54,7 +54,8 @@
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
 <span class="name ">addTask</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="addTask-param-context">{<span>required</span> <span class="type-annotation">dynamic</span> <span class="parameter-name">context</span>, </span></li>
 <li><span class="parameter" id="addTask-param-pageSize"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">pageSize</span>, </span></li>
-<li><span class="parameter" id="addTask-param-totalSize"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">totalSize</span>}</span></li>
+<li><span class="parameter" id="addTask-param-totalSize"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">totalSize</span>, </span></li>
+<li><span class="parameter" id="addTask-param-productType"><span>required</span> <span class="type-annotation">dynamic</span> <span class="parameter-name">productType</span>}</span></li>
 </ol>)
 
       
@@ -70,6 +71,7 @@
   required final BuildContext context,
   required final int pageSize,
   required final int totalSize,
+  required final ProductType productType,
 }) async {
   final LocalDatabase localDatabase = context.read&lt;LocalDatabase&gt;();
   final String uniqueId = await _operationType.getNewKey(
@@ -79,9 +81,10 @@
   );
   final BackgroundTask task = _getNewTask(
     uniqueId,
-    BackgroundTaskProgressing.workOffline,
+    WorkType.offline.getWorkTag(productType),
     pageSize,
     totalSize,
+    productType,
   );
   if (!context.mounted) {
     return;

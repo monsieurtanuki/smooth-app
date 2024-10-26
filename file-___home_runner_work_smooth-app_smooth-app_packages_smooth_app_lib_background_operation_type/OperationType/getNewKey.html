@@ -56,7 +56,8 @@
 <li><span class="parameter" id="getNewKey-param-barcode">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">barcode</span> = <span class="default-value">BackgroundTaskProgressing.noBarcode</span>, </span></li>
 <li><span class="parameter" id="getNewKey-param-totalSize"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">totalSize</span>, </span></li>
 <li><span class="parameter" id="getNewKey-param-soFarSize"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">soFarSize</span>, </span></li>
-<li><span class="parameter" id="getNewKey-param-work"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">work</span>}</span></li>
+<li><span class="parameter" id="getNewKey-param-work"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">work</span>, </span></li>
+<li><span class="parameter" id="getNewKey-param-productType"><span class="type-annotation">dynamic</span> <span class="parameter-name">productType</span>}</span></li>
 </ol>)
 
       
@@ -74,6 +75,7 @@
   final int? totalSize,
   final int? soFarSize,
   final String? work,
+  final ProductType? productType,
 }) async {
   final int sequentialId =
       await getNextSequenceNumber(DaoInt(localDatabase), _uniqueSequenceKey);
@@ -82,7 +84,8 @@
       &#39;$_transientHeaderSeparator$barcode&#39;
       &#39;$_transientHeaderSeparator${totalSize == null ? &#39;&#39; : totalSize.toString()}&#39;
       &#39;$_transientHeaderSeparator${soFarSize == null ? &#39;&#39; : soFarSize.toString()}&#39;
-      &#39;$_transientHeaderSeparator${work ?? &#39;&#39;}&#39;;
+      &#39;$_transientHeaderSeparator${work ?? &#39;&#39;}&#39;
+      &#39;$_transientHeaderSeparator${productType == null ? &#39;&#39; : productType.offTag}&#39;;
 }</code></pre>
 </section>
 

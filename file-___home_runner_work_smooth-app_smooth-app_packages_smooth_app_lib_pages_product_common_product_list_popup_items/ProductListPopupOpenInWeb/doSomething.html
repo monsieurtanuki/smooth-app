@@ -81,9 +81,14 @@ Future&lt;ProductList?&gt; doSomething({
   required final LocalDatabase localDatabase,
   required final BuildContext context,
 }) async {
-  final List&lt;String&gt; products = productList.getList();
-  AnalyticsHelper.trackEvent(AnalyticsEvent.openListWeb);
-  await launchUrl(shareProductList(products));
+  final Uri? firstUrl = await _getFirstUrl(
+    productList: productList,
+    localDatabase: localDatabase,
+  );
+  if (firstUrl != null) {
+    AnalyticsHelper.trackEvent(AnalyticsEvent.openListWeb);
+    unawaited(launchUrl(firstUrl));
+  }
   return null;
 }</code></pre>
 </section>

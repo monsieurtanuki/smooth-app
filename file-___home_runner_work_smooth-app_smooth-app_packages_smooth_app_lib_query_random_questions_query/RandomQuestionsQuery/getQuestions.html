@@ -95,6 +95,7 @@ Future&lt;List&lt;RobotoffQuestion&gt;&gt; getQuestions(
   await ProductRefresher().silentFetchAndRefreshList(
     barcodes: barcodes,
     localDatabase: localDatabase,
+    productType: ProductType.food,
   );
   return result.questions ?? &lt;RobotoffQuestion&gt;[];
 }</code></pre>

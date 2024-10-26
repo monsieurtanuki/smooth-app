@@ -82,15 +82,21 @@ Future&lt;ProductList?&gt; doSomething({
   required final BuildContext context,
 }) async {
   final AppLocalizations appLocalizations = AppLocalizations.of(context);
-  final List&lt;String&gt; products = productList.getList();
-  final String url = shareProductList(products).toString();
-
   final RenderBox? box = context.findRenderObject() as RenderBox?;
-  AnalyticsHelper.trackEvent(AnalyticsEvent.shareList);
-  Share.share(
-    appLocalizations.share_product_list_text(url),
-    sharePositionOrigin: box!.localToGlobal(Offset.zero) &amp; box.size,
-  );
+  final String? url = (await _getFirstUrl(
+    productList: productList,
+    localDatabase: localDatabase,
+  ))
+      ?.toString();
+  if (url != null) {
+    AnalyticsHelper.trackEvent(AnalyticsEvent.shareList);
+    unawaited(
+      Share.share(
+        appLocalizations.share_product_list_text(url),
+        sharePositionOrigin: box!.localToGlobal(Offset.zero) &amp; box.size,
+      ),
+    );
+  }
   return null;
 }</code></pre>
 </section>

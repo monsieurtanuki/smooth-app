@@ -72,7 +72,13 @@
   <pre class="language-dart"><code class="language-dart">@override
 Widget build(BuildContext context) {
   final TextDirection textDirection = Directionality.of(context);
-  final double bottomPadding = MediaQuery.viewPaddingOf(context).bottom;
+  double bottomPadding = MediaQuery.viewPaddingOf(context).bottom;
+  if (bottomPadding == 0) {
+    &#47;&#47; Add a slight padding for devices without a transparent nav bar
+    &#47;&#47; (eg: iPhone SE)
+    bottomPadding = 4.0;
+  }
+
   final double maxHeight = OnboardingBottomHills.height(context);
   final SmoothColorsThemeExtension colors =
       Theme.of(context).extension&lt;SmoothColorsThemeExtension&gt;()!;

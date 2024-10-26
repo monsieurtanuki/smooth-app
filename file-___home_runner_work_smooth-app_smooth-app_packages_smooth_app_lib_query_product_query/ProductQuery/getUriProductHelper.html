@@ -52,7 +52,7 @@
       
 
 <span class="returntype">dynamic</span>
-<span class="name ">getUriProductHelper</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getUriProductHelper-param-productType">{<span class="type-annotation">dynamic</span> <span class="parameter-name">productType</span>}</span></li>
+<span class="name ">getUriProductHelper</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getUriProductHelper-param-productType">{<span>required</span> <span class="type-annotation">dynamic</span> <span class="parameter-name">productType</span>}</span></li>
 </ol>)
 
       
@@ -65,7 +65,7 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">static UriProductHelper getUriProductHelper({
-  final ProductType? productType,
+  required final ProductType? productType,
 }) {
   final UriProductHelper currentUriProductHelper = _uriProductHelper;
   if (productType == null) {

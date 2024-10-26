@@ -64,8 +64,6 @@
       _preferences = preferences,
       _uriOverride = preferences.getDevModeString(
           UserPreferencesDevMode.userPreferencesCustomNewsJSONURI),
-      _domain = preferences.getDevModeString(
-          UserPreferencesDevMode.userPreferencesTestEnvDomain),
       _prodEnv = preferences
           .getFlag(UserPreferencesDevMode.userPreferencesFlagProd) {
   _preferences.addListener(_onPreferencesChanged);

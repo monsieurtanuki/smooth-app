@@ -74,34 +74,44 @@ Future&lt;void&gt; execute(final LocalDatabase localDatabase) async {
   final DaoProduct daoProduct = DaoProduct(localDatabase);
   final DaoWorkBarcode daoWorkBarcode = DaoWorkBarcode(localDatabase);
 
-  await daoWorkBarcode
-      .deleteWork(BackgroundTaskProgressing.workFreshWithoutKP);
-  await daoWorkBarcode.deleteWork(BackgroundTaskProgressing.workFreshWithKP);
+  for (final ProductType productType in ProductType.values) {
+    await daoWorkBarcode.deleteWork(
+      WorkType.freshKP.getWorkTag(productType),
+    );
+    await daoWorkBarcode.deleteWork(
+      WorkType.freshNoKP.getWorkTag(productType),
+    );
+  }
 
-  &#47;&#47; We separate the products into two lists, products with or without
-  &#47;&#47; knowledge panels
-  final List&lt;String&gt; barcodes = await daoProduct.getAllKeys();
-  final List&lt;String&gt; productsWithoutKP = &lt;String&gt;[];
-  final List&lt;String&gt; productsWithKP = &lt;String&gt;[];
-  for (final String barcode in barcodes) {
-    if (await _shouldBeDownloadedWithoutKP(daoProduct, barcode)) {
-      productsWithoutKP.add(barcode);
-    } else {
-      productsWithKP.add(barcode);
+  &#47;&#47; We separate the products into lists, products with or without
+  &#47;&#47; knowledge panels, and split by product types.
+  final Map&lt;String, List&lt;String&gt;&gt; split = await daoProduct.splitAllProducts(
+    (Product product) {
+      final bool noKP = product.knowledgePanels == null;
+      final WorkType workType = noKP ? WorkType.freshNoKP : WorkType.freshKP;
+      final ProductType productType = product.productType ?? ProductType.food;
+      return workType.getWorkTag(productType);
+    },
+  );
+  for (int i = 0; i &lt;= 1; i++) {
+    final bool noKP = i == 0;
+    final WorkType workType = noKP ? WorkType.freshNoKP : WorkType.freshKP;
+    for (final ProductType productType in ProductType.values) {
+      final String tag = workType.getWorkTag(productType);
+      final List&lt;String&gt;? barcodes = split[tag];
+      if (barcodes == null) {
+        continue;
+      }
+      await _startDownloadTask(
+        barcodes: barcodes,
+        work: tag,
+        localDatabase: localDatabase,
+        downloadFlag:
+            noKP ? BackgroundTaskDownloadProducts.flagMaskExcludeKP : 0,
+        productType: productType,
+      );
     }
   }
-  await _startDownloadTask(
-    barcodes: productsWithoutKP,
-    work: BackgroundTaskProgressing.workFreshWithoutKP,
-    localDatabase: localDatabase,
-    downloadFlag: BackgroundTaskDownloadProducts.flagMaskExcludeKP,
-  );
-  await _startDownloadTask(
-    barcodes: productsWithKP,
-    work: BackgroundTaskProgressing.workFreshWithKP,
-    localDatabase: localDatabase,
-    downloadFlag: 0,
-  );
 }</code></pre>
 </section>
 

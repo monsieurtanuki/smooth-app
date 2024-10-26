@@ -51,7 +51,7 @@
     <section class="multi-line-signature">
       
 
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span></span>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter">dynamic</span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span></span>&gt;</span></span>
 <span class="name ">getTotalNoOfProducts</span>(<wbr>)
 
       
@@ -66,13 +66,20 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;int&gt; getTotalNoOfProducts() async {
-  return Sqflite.firstIntValue(
-        await localDatabase.database.rawQuery(
-          &#39;select count(*) from $_TABLE_PRODUCT&#39;,
-        ),
-      ) ??
-      0;
+  <pre class="language-dart"><code class="language-dart">Future&lt;Map&lt;ProductType, int&gt;&gt; getTotalNoOfProducts() async {
+  final Map&lt;ProductType, int&gt; result = &lt;ProductType, int&gt;{};
+  final List&lt;Map&lt;String, dynamic&gt;&gt; queryResults =
+      await localDatabase.database.query(
+    _TABLE_PRODUCT,
+    columns: _columns,
+  );
+  for (final Map&lt;String, dynamic&gt; row in queryResults) {
+    final Product product = _getProductFromQueryResult(row);
+    final ProductType productType = product.productType ?? ProductType.food;
+    final int? count = result[productType];
+    result[productType] = 1 + (count ?? 0);
+  }
+  return result;
 }</code></pre>
 </section>
 
@@ -116,6 +123,7 @@
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_database_dao_product/DaoProduct/getDeleteWhere.html">getDeleteWhere</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_database_dao_product/DaoProduct/getEstimatedTotalSizeInMB.html">getEstimatedTotalSizeInMB</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_database_dao_product/DaoProduct/getInsertColumns.html">getInsertColumns</a></li>
+    <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_database_dao_product/DaoProduct/getProductTypes.html">getProductTypes</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_database_dao_product/DaoProduct/getTableName.html">getTableName</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_database_dao_product/DaoProduct/getTopProductsToTranslate.html">getTopProductsToTranslate</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_database_dao_product/DaoProduct/getTotalNoOfProducts.html">getTotalNoOfProducts</a></li>
@@ -123,6 +131,7 @@
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_database_dao_product/DaoProduct/printStats.html">printStats</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_database_dao_product/DaoProduct/put.html">put</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_database_dao_product/DaoProduct/putAll.html">putAll</a></li>
+    <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_database_dao_product/DaoProduct/splitAllProducts.html">splitAllProducts</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
 
     <li class="section-title inherited"><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_database_dao_product/DaoProduct-class.html#operators">Operators</a></li>
