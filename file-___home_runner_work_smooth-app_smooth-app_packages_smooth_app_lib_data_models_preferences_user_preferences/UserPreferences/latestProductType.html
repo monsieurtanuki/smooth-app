@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the getUniqueRandom method from the UserPreferences class, for the Dart programming language.">
-  <title>getUniqueRandom method - UserPreferences class - user_preferences library - Dart API</title>
+  <meta name="description" content="API docs for the latestProductType property from the UserPreferences class, for the Dart programming language.">
+  <title>latestProductType property - UserPreferences class - user_preferences library - Dart API</title>
 
 
   
@@ -31,9 +31,9 @@
     <li><a href="../../index.html">smooth_app</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_data_models_preferences_user_preferences/file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_data_models_preferences_user_preferences-library.html">user_preferences</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_data_models_preferences_user_preferences/UserPreferences-class.html">UserPreferences</a></li>
-    <li class="self-crumb">getUniqueRandom method</li>
+    <li class="self-crumb">latestProductType property</li>
   </ol>
-  <div class="self-name">getUniqueRandom</div>
+  <div class="self-name">latestProductType</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -44,40 +44,59 @@
 
   <div id="dartdoc-main-content" class="main-content">
       <div>
-<h1><span class="kind-method">getUniqueRandom</span> method 
+<h1><span class="kind-property">latestProductType</span> property 
     <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
-    <section class="multi-line-signature">
-      
 
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span></span>
-<span class="name ">getUniqueRandom</span>(<wbr>)
+        
+<section id="getter">
 
-      
+<section class="multi-line-signature">
+  <span class="returntype">dynamic</span>
+  <span class="name ">latestProductType</span>
+  
 
-    </section>
-    
-<section class="desc markdown">
-  <p>Returns a huge random value that will be computed just once.</p>
 </section>
 
 
-    
+
+
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;int&gt; getUniqueRandom() async {
-  const String tag = _TAG_UNIQUE_RANDOM;
-  int? result = _sharedPreferences.getInt(tag);
-  if (result != null) {
-    return result;
-  }
-  result = math.Random().nextInt(1 &lt;&lt; 32);
-  await _sharedPreferences.setInt(tag, result);
-  return result;
-}</code></pre>
+  <pre class="language-dart"><code class="language-dart">ProductType get latestProductType =&gt;
+    ProductType.fromOffTag(
+        _sharedPreferences.getString(_TAG_LATEST_PRODUCT_TYPE)) ??
+    ProductType.food;</code></pre>
 </section>
 
+</section>
+
+
+        
+<section id="setter">
+
+<section class="multi-line-signature">
+  <span class="returntype">void</span>
+  <span class="name ">latestProductType=</span><span class="signature">(<wbr><span class="parameter" id="latestProductType=-param-value"><span class="type-annotation">dynamic</span> <span class="parameter-name">value</span></span>)</span>
+  
+
+</section>
+
+
+
+
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">set latestProductType(final ProductType value) =&gt; unawaited(
+      _sharedPreferences.setString(
+        _TAG_LATEST_PRODUCT_TYPE,
+        value.offTag,
+      ),
+    );</code></pre>
+</section>
+
+</section>
 
   </div> <!-- /.main-content -->
 
@@ -92,7 +111,7 @@
   <li><a href="../../index.html">smooth_app</a></li>
   <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_data_models_preferences_user_preferences/file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_data_models_preferences_user_preferences-library.html">user_preferences</a></li>
   <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_data_models_preferences_user_preferences/UserPreferences-class.html">UserPreferences</a></li>
-  <li class="self-crumb">getUniqueRandom method</li>
+  <li class="self-crumb">latestProductType property</li>
 </ol>
 
 

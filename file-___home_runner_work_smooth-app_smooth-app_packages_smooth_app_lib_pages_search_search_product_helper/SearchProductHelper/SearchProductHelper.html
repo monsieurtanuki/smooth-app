@@ -58,7 +58,9 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">SearchProductHelper();</code></pre>
+  <pre class="language-dart"><code class="language-dart">SearchProductHelper() {
+  _productType = UserPreferences.getUserPreferencesSync().latestProductType;
+}</code></pre>
 </section>
 
 
