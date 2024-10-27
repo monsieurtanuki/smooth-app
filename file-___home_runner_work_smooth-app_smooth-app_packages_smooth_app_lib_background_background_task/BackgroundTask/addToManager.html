@@ -53,7 +53,8 @@
 
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
 <span class="name ">addToManager</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="addToManager-param-localDatabase"><span class="type-annotation">dynamic</span> <span class="parameter-name">localDatabase</span>, </span></li>
-<li><span class="parameter" id="addToManager-param-context">{<span class="type-annotation">dynamic</span> <span class="parameter-name">context</span>, </span></li>
+<li><span class="parameter" id="addToManager-param-queue">{<span>required</span> <span class="type-annotation">dynamic</span> <span class="parameter-name">queue</span>, </span></li>
+<li><span class="parameter" id="addToManager-param-context"><span class="type-annotation">dynamic</span> <span class="parameter-name">context</span>, </span></li>
 <li><span class="parameter" id="addToManager-param-showSnackBar"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">showSnackBar</span> = <span class="default-value">true</span>}</span></li>
 </ol>)
 
@@ -72,10 +73,14 @@
   <pre class="language-dart"><code class="language-dart">@protected
 Future&lt;void&gt; addToManager(
   final LocalDatabase localDatabase, {
+  required final BackgroundTaskQueue queue,
   final BuildContext? context,
   final bool showSnackBar = true,
 }) async {
-  await BackgroundTaskManager.getInstance(localDatabase).add(this);
+  await BackgroundTaskManager.getInstance(
+    localDatabase,
+    queue: queue,
+  ).add(this);
   if (context == null || !context.mounted) {
     return;
   }

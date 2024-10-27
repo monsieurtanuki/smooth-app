@@ -90,7 +90,10 @@
     excludeBarcodes,
     productType,
   );
-  await task.addToManager(localDatabase);
+  await task.addToManager(
+    localDatabase,
+    queue: BackgroundTaskQueue.longHaul,
+  );
 }</code></pre>
 </section>
 

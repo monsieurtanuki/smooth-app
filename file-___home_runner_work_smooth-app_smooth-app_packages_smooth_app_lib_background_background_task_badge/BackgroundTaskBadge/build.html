@@ -72,14 +72,17 @@
   <pre class="language-dart"><code class="language-dart">@override
 Widget build(BuildContext context) {
   final LocalDatabase localDatabase = context.watch&lt;LocalDatabase&gt;();
-  final List&lt;String&gt; tasks = localDatabase.getAllTaskIds();
-  if (tasks.isEmpty) {
+  int count = 0;
+  for (final BackgroundTaskQueue queue in BackgroundTaskQueue.values) {
+    count += localDatabase.getAllTaskIds(queue.tagTaskQueue).length;
+  }
+  if (count == 0) {
     return child;
   }
   return Badge(
     backgroundColor: Colors.blue.shade900,
     label: Text(
-      &#39;${tasks.length}&#39;,
+      &#39;$count&#39;,
       style: const TextStyle(color: Colors.white),
     ),
     child: child,

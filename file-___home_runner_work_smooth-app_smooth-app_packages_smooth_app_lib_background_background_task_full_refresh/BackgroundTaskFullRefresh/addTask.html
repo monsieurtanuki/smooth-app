@@ -80,7 +80,11 @@
   if (!context.mounted) {
     return;
   }
-  await task.addToManager(localDatabase, context: context);
+  await task.addToManager(
+    localDatabase,
+    context: context,
+    queue: BackgroundTaskQueue.longHaul,
+  );
 }</code></pre>
 </section>
 

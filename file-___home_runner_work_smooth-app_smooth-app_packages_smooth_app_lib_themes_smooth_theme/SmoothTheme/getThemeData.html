@@ -115,6 +115,8 @@
       selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
       showUnselectedLabels: true,
       unselectedIconTheme: const IconThemeData(size: 20.0),
+      elevation: 0.0,
+      enableFeedback: true,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
@@ -122,6 +124,11 @@
           (Set&lt;WidgetState&gt; states) =&gt; states.contains(WidgetState.disabled)
               ? Colors.grey
               : myColorScheme.primary,
+        ),
+        foregroundColor: WidgetStateProperty.resolveWith&lt;Color?&gt;(
+          (Set&lt;WidgetState&gt; states) =&gt; states.contains(WidgetState.disabled)
+              ? Colors.white
+              : myColorScheme.onPrimary,
         ),
       ),
     ),

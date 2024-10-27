@@ -108,7 +108,11 @@
   if (!context.mounted) {
     return;
   }
-  await task.addToManager(localDatabase, context: context);
+  await task.addToManager(
+    localDatabase,
+    context: context,
+    queue: BackgroundTaskQueue.slow,
+  );
 }</code></pre>
 </section>
 
