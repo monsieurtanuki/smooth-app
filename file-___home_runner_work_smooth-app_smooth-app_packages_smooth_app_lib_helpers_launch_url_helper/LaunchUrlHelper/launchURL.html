@@ -52,7 +52,8 @@
       
 
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
-<span class="name ">launchURL</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="launchURL-param-url"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">url</span></span></li>
+<span class="name ">launchURL</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="launchURL-param-url"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">url</span>, </span></li>
+<li><span class="parameter" id="launchURL-param-mode">{<span class="type-annotation">dynamic</span> <span class="parameter-name">mode</span>}</span></li>
 </ol>)
 
       
@@ -67,15 +68,19 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static Future&lt;void&gt; launchURL(String url) async {
+  <pre class="language-dart"><code class="language-dart">static Future&lt;void&gt; launchURL(
+  String url, {
+  LaunchMode? mode,
+}) async {
   AnalyticsHelper.trackOutlink(url: url);
 
   try {
     await launchUrl(
       Uri.parse(url),
-      mode: Platform.isAndroid
-          ? LaunchMode.externalApplication
-          : LaunchMode.platformDefault,
+      mode: mode ??
+          (Platform.isAndroid
+              ? LaunchMode.externalApplication
+              : LaunchMode.platformDefault),
     );
   } catch (e) {
     throw &#39;Could not launch $url,Error: $e&#39;;

@@ -92,12 +92,13 @@
     }
   }
 
+  final SmoothColorsThemeExtension smoothExtension =
+      SmoothColorsThemeExtension.defaultValues();
+
   return ThemeData(
     fontFamily: &#39;OpenSans&#39;,
     primaryColor: DARK_BROWN_COLOR,
-    extensions: &lt;SmoothColorsThemeExtension&gt;[
-      SmoothColorsThemeExtension.defaultValues(),
-    ],
+    extensions: &lt;ThemeExtension&lt;dynamic&gt;&gt;[smoothExtension],
     colorScheme: myColorScheme,
     canvasColor: themeProvider.currentTheme == THEME_AMOLED
         ? myColorScheme.surface
@@ -151,10 +152,12 @@
       color: myColorScheme.onSurface,
     ),
     snackBarTheme: SnackBarThemeData(
-      contentTextStyle:
-          _TEXT_THEME.bodyMedium?.copyWith(color: myColorScheme.onPrimary),
-      actionTextColor: myColorScheme.onPrimary,
-      backgroundColor: myColorScheme.onSurface,
+      contentTextStyle: _TEXT_THEME.bodyMedium?.copyWith(
+        color: Colors.white,
+        fontWeight: FontWeight.w500,
+      ),
+      actionTextColor: Colors.white,
+      backgroundColor: smoothExtension.primaryBlack,
     ),
     bannerTheme: MaterialBannerThemeData(
       contentTextStyle: TextStyle(color: myColorScheme.onSecondary),

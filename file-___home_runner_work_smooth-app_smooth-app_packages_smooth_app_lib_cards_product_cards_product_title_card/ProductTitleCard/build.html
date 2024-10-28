@@ -71,14 +71,45 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@override
 Widget build(BuildContext context) {
-  Widget title = _ProductTitleCardTrailing(
+  final Widget title = _ProductTitleCardTrailing(
     removable: isRemovable,
     selectable: isSelectable,
     onRemove: onRemove,
   );
 
-  if (!dense &amp;&amp; !(isRemovable &amp;&amp; !isSelectable)) {
-    title = Expanded(child: title);
+  final List&lt;Widget&gt; children;
+
+  if (dense) {
+    children = &lt;Widget&gt;[
+      Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: &lt;Widget&gt;[
+          Expanded(
+            child: _ProductTitleCardName(
+              selectable: isSelectable,
+              dense: dense,
+            ),
+          ),
+          title,
+        ],
+      ),
+      _ProductTitleCardBrand(
+        removable: isRemovable,
+        selectable: isSelectable,
+      ),
+    ];
+  } else {
+    children = &lt;Widget&gt;[
+      _ProductTitleCardName(
+        selectable: isSelectable,
+        dense: dense,
+      ),
+      _ProductTitleCardBrand(
+        removable: isRemovable,
+        selectable: isSelectable,
+      ),
+      title,
+    ];
   }
 
   return Provider&lt;Product&gt;.value(
@@ -87,24 +118,7 @@ Widget build(BuildContext context) {
       alignment: AlignmentDirectional.topStart,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: &lt;Widget&gt;[
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: &lt;Widget&gt;[
-              Expanded(
-                child: _ProductTitleCardName(
-                  selectable: isSelectable,
-                  dense: dense,
-                ),
-              ),
-              title,
-            ],
-          ),
-          _ProductTitleCardBrand(
-            removable: isRemovable,
-            selectable: isSelectable,
-          ),
-        ],
+        children: children,
       ),
     ),
   );

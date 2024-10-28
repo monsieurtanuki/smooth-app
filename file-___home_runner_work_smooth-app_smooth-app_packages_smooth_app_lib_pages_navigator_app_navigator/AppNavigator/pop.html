@@ -51,7 +51,7 @@
     <section class="multi-line-signature">
       
 
-<span class="returntype">void</span>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
 <span class="name ">pop</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="pop-param-result">[<span class="type-annotation">dynamic</span> <span class="parameter-name">result</span>]</span></li>
 </ol>)
 
@@ -59,13 +59,22 @@
 
     </section>
     
+<section class="desc markdown">
+  <p>Returns <code>true</code> if the pop was successful
+Returns <code>false</code> if there is nothing to pop (= no history)</p>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">void pop([dynamic result]) {
-  _router.router.pop(result);
+  <pre class="language-dart"><code class="language-dart">bool pop([dynamic result]) {
+  try {
+    _router.router.pop(result);
+    return true;
+  } on GoError catch (_) {
+    return false;
+  }
 }</code></pre>
 </section>
 
