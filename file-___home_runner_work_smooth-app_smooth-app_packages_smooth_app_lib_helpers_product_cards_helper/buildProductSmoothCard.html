@@ -53,6 +53,8 @@
 
 <span class="returntype">dynamic</span>
 <span class="name ">buildProductSmoothCard</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="buildProductSmoothCard-param-header">{<span class="type-annotation">dynamic</span> <span class="parameter-name">header</span>, </span></li>
+<li><span class="parameter" id="buildProductSmoothCard-param-title"><span class="type-annotation">dynamic</span> <span class="parameter-name">title</span>, </span></li>
+<li><span class="parameter" id="buildProductSmoothCard-param-titlePadding"><span class="type-annotation">dynamic</span> <span class="parameter-name">titlePadding</span>, </span></li>
 <li><span class="parameter" id="buildProductSmoothCard-param-body"><span>required</span> <span class="type-annotation">dynamic</span> <span class="parameter-name">body</span>, </span></li>
 <li><span class="parameter" id="buildProductSmoothCard-param-padding"><span class="type-annotation">dynamic</span> <span class="parameter-name">padding</span> = <span class="default-value">EdgeInsets.zero</span>, </span></li>
 <li><span class="parameter" id="buildProductSmoothCard-param-margin"><span class="type-annotation">dynamic</span> <span class="parameter-name">margin</span> = <span class="default-value">const EdgeInsets.symmetric(horizontal: SMALL_SPACE)</span>}</span></li>
@@ -70,26 +72,50 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Widget buildProductSmoothCard({
   Widget? header,
+  Widget? title,
+  EdgeInsetsGeometry? titlePadding,
   required Widget body,
-  EdgeInsets? padding = EdgeInsets.zero,
-  EdgeInsets? margin = const EdgeInsets.symmetric(
+  EdgeInsetsGeometry? padding = EdgeInsets.zero,
+  EdgeInsetsGeometry? margin = const EdgeInsets.symmetric(
     horizontal: SMALL_SPACE,
   ),
-}) =&gt;
-    SmoothCard(
-      margin: margin,
-      padding: padding,
-      child: switch (header) {
-        Object _ =&gt; Column(
-            mainAxisSize: MainAxisSize.min,
-            children: &lt;Widget&gt;[
-              if (header != null) header,
-              body,
-            ],
-          ),
-        _ =&gt; body
-      },
-    );</code></pre>
+}) {
+  assert(
+    (header != null &amp;&amp; title == null) || header == null,
+    &quot;You can&#39;t pass a header and a title at the same time&quot;,
+  );
+
+  Widget child;
+
+  if (title != null) {
+    child = Column(
+      mainAxisSize: MainAxisSize.min,
+      children: &lt;Widget&gt;[
+        _ProductSmoothCardTitle(
+          title: title,
+          padding: titlePadding,
+        ),
+        body,
+      ],
+    );
+  } else if (header != null) {
+    child = Column(
+      mainAxisSize: MainAxisSize.min,
+      children: &lt;Widget&gt;[
+        header,
+        body,
+      ],
+    );
+  } else {
+    child = body;
+  }
+
+  return SmoothCard(
+    margin: margin,
+    padding: padding,
+    child: child,
+  );
+}</code></pre>
 </section>
 
 

@@ -72,87 +72,89 @@
   <pre class="language-dart"><code class="language-dart">@override
 Widget build(BuildContext context) {
   final AppLocalizations appLocalizations = AppLocalizations.of(context);
-  final SmoothColorsThemeExtension? themeExtension =
-      Theme.of(context).extension&lt;SmoothColorsThemeExtension&gt;();
+  final SmoothColorsThemeExtension themeExtension =
+      Theme.of(context).extension&lt;SmoothColorsThemeExtension&gt;()!;
 
   return buildProductSmoothCard(
+    title: Stack(
+      children: &lt;Widget&gt;[
+        Positioned.directional(
+          textDirection: Directionality.of(context),
+          start: LARGE_SPACE,
+          child: Container(
+            decoration: BoxDecoration(
+              color: themeExtension.orange,
+              shape: BoxShape.circle,
+            ),
+            padding: const EdgeInsetsDirectional.only(
+              top: 5.0,
+              start: 6.0,
+              end: 6.0,
+              bottom: 7.0,
+            ),
+            child: const icons.Lab(
+              size: 10.0,
+              color: Colors.white,
+            ),
+          ),
+        ),
+        const SizedBox(width: SMALL_SPACE),
+        Center(child: Text(appLocalizations.prices_generic_title)),
+      ],
+    ),
     body: Container(
       width: double.infinity,
       padding: const EdgeInsetsDirectional.all(LARGE_SPACE),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
+      child: Stack(
         children: &lt;Widget&gt;[
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: &lt;Widget&gt;[
-              Text(
-                AppLocalizations.of(context).prices_generic_title,
-                style: Theme.of(context).textTheme.displaySmall,
-              ),
-              const SizedBox(width: SMALL_SPACE),
-              Container(
-                decoration: BoxDecoration(
-                  color: themeExtension!.secondaryNormal,
-                  borderRadius: CIRCULAR_BORDER_RADIUS,
-                ),
-                margin: const EdgeInsets.only(top: 0.5),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: MEDIUM_SPACE,
-                  vertical: VERY_SMALL_SPACE,
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: &lt;Widget&gt;[
-                    Text(
-                      appLocalizations.preview_badge,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(width: SMALL_SPACE),
-                    const Lab(
-                      color: Colors.white,
-                      size: 13.0,
-                    ),
-                  ],
-                ),
-              ),
-            ],
+          Positioned.directional(
+            textDirection: Directionality.of(context),
+            bottom: 0.0,
+            end: 0.0,
+            child: const _PricesCardTitleIcon(),
           ),
-          const SizedBox(height: SMALL_SPACE),
-          Padding(
-            padding: const EdgeInsets.all(SMALL_SPACE),
-            child: SmoothLargeButtonWithIcon(
-              text: appLocalizations.prices_view_prices,
-              icon: CupertinoIcons.tag_fill,
-              onPressed: () async =&gt; Navigator.of(context).push(
-                MaterialPageRoute&lt;void&gt;(
-                  builder: (BuildContext context) =&gt; PricesPage(
-                    GetPricesModel.product(
-                      product: PriceMetaProduct.product(product),
-                      context: context,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: &lt;Widget&gt;[
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: SMALL_SPACE),
+                child: SmoothLargeButtonWithIcon(
+                  text: appLocalizations.prices_view_prices,
+                  icon: CupertinoIcons.tag_fill,
+                  onPressed: () async =&gt; Navigator.of(context).push(
+                    MaterialPageRoute&lt;void&gt;(
+                      builder: (BuildContext context) =&gt; PricesPage(
+                        GetPricesModel.product(
+                          product: PriceMetaProduct.product(product),
+                          context: context,
+                        ),
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(SMALL_SPACE),
-            child: SmoothLargeButtonWithIcon(
-              text: appLocalizations.prices_add_a_price,
-              icon: Icons.add,
-              onPressed: () async =&gt; ProductPriceAddPage.showProductPage(
-                context: context,
-                product: PriceMetaProduct.product(product),
-                proofType: ProofType.priceTag,
+              Padding(
+                padding: const EdgeInsets.all(SMALL_SPACE),
+                child: SmoothLargeButtonWithIcon(
+                  text: appLocalizations.prices_add_a_price,
+                  icon: Icons.add,
+                  onPressed: () async =&gt; ProductPriceAddPage.showProductPage(
+                    context: context,
+                    product: PriceMetaProduct.product(product),
+                    proofType: ProofType.priceTag,
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
         ],
       ),
+    ),
+    margin: const EdgeInsetsDirectional.only(
+      start: SMALL_SPACE,
+      end: SMALL_SPACE,
+      top: VERY_LARGE_SPACE,
     ),
   );
 }</code></pre>

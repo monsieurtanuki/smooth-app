@@ -71,29 +71,19 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@override
 Widget build(BuildContext context) {
-  double bottomPadding = MediaQuery.viewPaddingOf(context).bottom;
-  &#47;&#47; Add an extra padding (for Android)
-  if (bottomPadding == 0.0) {
-    bottomPadding = 16.0;
-  }
-
   return DecoratedBox(
     decoration: BoxDecoration(
       color: Theme.of(context).scaffoldBackgroundColor,
       boxShadow: &lt;BoxShadow&gt;[
         BoxShadow(
-          color: Theme.of(context).shadowColor.withOpacity(0.1),
+          color: Theme.of(context)
+              .shadowColor
+              .withOpacity(context.lightTheme() ? 0.25 : 0.6),
           blurRadius: 10.0,
         ),
       ],
     ),
-    child: Padding(
-      padding: EdgeInsetsDirectional.only(
-        top: 16.0,
-        bottom: bottomPadding,
-      ),
-      child: const _ProductFooterButtonsBar(),
-    ),
+    child: const _ProductFooterButtonsBar(),
   );
 }</code></pre>
 </section>

@@ -72,6 +72,9 @@
   <pre class="language-dart"><code class="language-dart">@override
 Widget build(BuildContext context) {
   final ThemeData themeData = Theme.of(context);
+  final SmoothColorsThemeExtension themeExtension =
+      themeData.extension&lt;SmoothColorsThemeExtension&gt;()!;
+
   return Provider&lt;KnowledgePanelPanelGroupElement&gt;(
     lazy: true,
     create: (_) =&gt; groupElement,
@@ -85,8 +88,13 @@ Widget build(BuildContext context) {
               explicitChildNodes: true,
               child: Text(
                 groupElement.title!,
-                style:
-                    themeData.textTheme.titleSmall!.apply(color: Colors.grey),
+                style: themeData.textTheme.titleSmall!.copyWith(
+                  fontSize: 15.5,
+                  fontWeight: FontWeight.w700,
+                  color: context.lightTheme()
+                      ? themeExtension.primaryUltraBlack
+                      : themeExtension.primaryLight,
+                ),
               ),
             ),
           ),

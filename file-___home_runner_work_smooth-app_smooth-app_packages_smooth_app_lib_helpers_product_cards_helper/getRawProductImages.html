@@ -79,7 +79,7 @@
   for (final ProductImage productImage in rawImages) {
     final int? imageId = int.tryParse(productImage.imgid!);
     if (imageId == null) {
-      &#47;&#47; highly unlikely
+&#47;&#47; highly unlikely
       continue;
     }
     final ProductImage? previous = map[imageId];
@@ -89,12 +89,12 @@
     }
     final ImageSize? currentImageSize = productImage.size;
     if (currentImageSize == null) {
-      &#47;&#47; highly unlikely
+&#47;&#47; highly unlikely
       continue;
     }
     final ImageSize? previousImageSize = previous.size;
     if (previousImageSize == imageSize) {
-      &#47;&#47; we already have the best
+&#47;&#47; we already have the best
       continue;
     }
     map[imageId] = productImage;

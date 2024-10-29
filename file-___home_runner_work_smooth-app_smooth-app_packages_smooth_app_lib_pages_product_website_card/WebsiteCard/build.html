@@ -74,57 +74,58 @@ Widget build(BuildContext context) {
   final AppLocalizations localizations = AppLocalizations.of(context);
   final String website = _getWebsite();
 
-  return buildProductSmoothCard(
-    body: Semantics(
-      label: localizations.product_field_website_title,
-      value: Uri.parse(website).host,
-      link: true,
-      excludeSemantics: true,
+  return Semantics(
+    label: localizations.product_field_website_title,
+    value: Uri.parse(website).host,
+    link: true,
+    excludeSemantics: true,
+    child: Padding(
+      padding: const EdgeInsetsDirectional.only(
+        top: VERY_LARGE_SPACE,
+        start: SMALL_SPACE,
+        end: SMALL_SPACE,
+      ),
       child: InkWell(
         onTap: () async =&gt; LaunchUrlHelper.launchURL(website),
         borderRadius: ROUNDED_BORDER_RADIUS,
-        child: Container(
-          width: double.infinity,
-          padding: const EdgeInsetsDirectional.only(
-            start: LARGE_SPACE,
-            top: LARGE_SPACE,
-            bottom: LARGE_SPACE,
-            &#47;&#47; To be perfectly aligned with arrows
-            end: 21.0,
-          ),
-          child: Row(
-            children: &lt;Widget&gt;[
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: &lt;Widget&gt;[
-                    Text(
-                      localizations.product_field_website_title,
-                      style: Theme.of(context).textTheme.displaySmall,
-                    ),
-                    const SizedBox(height: SMALL_SPACE),
-                    Text(
-                      website,
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium
-                          ?.copyWith(color: Colors.blue),
-                    ),
-                  ],
+        child: buildProductSmoothCard(
+          title: Text(localizations.product_field_website_title),
+          body: Container(
+            width: double.infinity,
+            padding: const EdgeInsetsDirectional.only(
+              start: LARGE_SPACE,
+              top: LARGE_SPACE,
+              bottom: LARGE_SPACE,
+              &#47;&#47; To be perfectly aligned with arrows
+              end: 21.0,
+            ),
+            child: Row(
+              children: &lt;Widget&gt;[
+                Expanded(
+                  child: Text(
+                    website,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyMedium
+                        ?.copyWith(color: Colors.blue),
+                  ),
                 ),
-              ),
-              const Icon(Icons.open_in_new),
-            ],
+                const Padding(
+                  padding: EdgeInsetsDirectional.only(
+                    start: 5.0,
+                    end: 3.0,
+                  ),
+                  child: icons.ExternalLink(
+                    size: 20.0,
+                  ),
+                ),
+              ],
+            ),
           ),
+          margin: EdgeInsets.zero,
         ),
       ),
-    ),
-    margin: const EdgeInsets.only(
-      left: SMALL_SPACE,
-      right: SMALL_SPACE,
-      bottom: MEDIUM_SPACE,
     ),
   );
 }</code></pre>
