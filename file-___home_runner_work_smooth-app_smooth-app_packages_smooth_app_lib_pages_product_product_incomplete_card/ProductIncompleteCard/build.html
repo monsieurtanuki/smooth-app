@@ -83,7 +83,11 @@ Widget build(BuildContext context) {
     child: ElevatedButton.icon(
       label: Padding(
         padding: const EdgeInsets.symmetric(vertical: SMALL_SPACE),
-        child: Text(appLocalizations.hey_incomplete_product_message),
+        child: Text(
+          (product.productType ?? ProductType.food).getRoadToScoreLabel(
+            appLocalizations,
+          ),
+        ),
       ),
       icon: const Icon(
         Icons.bolt,
