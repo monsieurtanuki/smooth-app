@@ -71,7 +71,7 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@override
 Widget build(BuildContext context) {
-  return Scaffold(
+  return SmoothScaffold(
     backgroundColor: const Color(0xFFE3F3FE),
     body: Provider&lt;OnboardingConfig&gt;.value(
       value: OnboardingConfig._(MediaQuery.sizeOf(context)),

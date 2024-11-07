@@ -78,21 +78,14 @@ Widget build(BuildContext context) {
   return SmoothScaffold(
     appBar: SmoothAppBar(
       title: title == null ? null : Text(title),
-      subTitle: subtitle == null ? null : Text(subtitle),
+      subTitle: subtitle == null
+          ? null
+          : Text(
+              subtitle,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
       actions: &lt;Widget&gt;[
-        IconButton(
-          icon: const Icon(Icons.check),
-          onPressed: () {
-            &#47;&#47; pops that map page
-            Navigator.of(context).pop();
-            if (popFirst) {
-              &#47;&#47; pops the result page
-              Navigator.of(context).pop();
-            }
-            &#47;&#47; returns the result
-            Navigator.of(context).pop(osmLocation);
-          },
-        ),
         IconButton(
           icon: const Icon(Icons.info),
           onPressed: () =&gt; showCupertinoModalPopup&lt;void&gt;(
@@ -117,6 +110,19 @@ Widget build(BuildContext context) {
               ],
             ),
           ),
+        ),
+        IconButton(
+          icon: const Icon(Icons.check),
+          onPressed: () {
+            &#47;&#47; pops that map page
+            Navigator.of(context).pop();
+            if (popFirst) {
+              &#47;&#47; pops the result page
+              Navigator.of(context).pop();
+            }
+            &#47;&#47; returns the result
+            Navigator.of(context).pop(osmLocation);
+          },
         ),
       ],
     ),

@@ -88,9 +88,31 @@
         &#39;,PRIMARY KEY($_columnId,$_columnType) on conflict replace&#39;
         &#39;)&#39;);
   }
+
+  &#47;&#47;&#47; Not brilliant, but for historical reasons we have to catch that here.
+  bool isDuplicateColumnException(
+    final DatabaseException e,
+    final String column,
+  ) =&gt;
+      e.toString().startsWith(
+          &#39;DatabaseException(duplicate column name: $column (code 1 SQLITE_ERROR)&#39;);
+
   if (oldVersion &lt; 7) {
-    await db.execute(&#39;alter table $_table add column $_columnOsmKey TEXT&#39;);
-    await db.execute(&#39;alter table $_table add column $_columnOsmValue TEXT&#39;);
+    try {
+      await db.execute(&#39;alter table $_table add column $_columnOsmKey TEXT&#39;);
+    } on DatabaseException catch (e) {
+      if (!isDuplicateColumnException(e, _columnOsmKey)) {
+        rethrow;
+      }
+    }
+    try {
+      await db
+          .execute(&#39;alter table $_table add column $_columnOsmValue TEXT&#39;);
+    } on DatabaseException catch (e) {
+      if (!isDuplicateColumnException(e, _columnOsmValue)) {
+        rethrow;
+      }
+    }
   }
 }</code></pre>
 </section>

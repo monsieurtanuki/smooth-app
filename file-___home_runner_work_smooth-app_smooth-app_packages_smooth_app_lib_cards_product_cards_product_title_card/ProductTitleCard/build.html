@@ -100,15 +100,30 @@ Widget build(BuildContext context) {
     ];
   } else {
     children = &lt;Widget&gt;[
-      _ProductTitleCardName(
-        selectable: isSelectable,
-        dense: dense,
+      Padding(
+        padding: const EdgeInsetsDirectional.only(top: VERY_SMALL_SPACE),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: &lt;Widget&gt;[
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: &lt;Widget&gt;[
+                  _ProductTitleCardName(
+                    selectable: isSelectable,
+                    dense: dense,
+                  ),
+                  _ProductTitleCardBrand(
+                    removable: isRemovable,
+                    selectable: isSelectable,
+                  ),
+                ],
+              ),
+            ),
+            title,
+          ],
+        ),
       ),
-      _ProductTitleCardBrand(
-        removable: isRemovable,
-        selectable: isSelectable,
-      ),
-      title,
     ];
   }
 
