@@ -82,7 +82,8 @@ Future&lt;void&gt; execute(final LocalDatabase localDatabase) async {
   if (barcodes.isEmpty) {
     return;
   }
-  final SearchResult searchResult = await OpenFoodAPIClient.searchProducts(
+  final SearchResult searchResult =
+      await SearchProductsManager.searchProducts(
     getUser(),
     ProductSearchQueryConfiguration(
       fields: ProductQuery.fields,
@@ -96,13 +97,18 @@ Future&lt;void&gt; execute(final LocalDatabase localDatabase) async {
       version: ProductQuery.productQueryVersion,
     ),
     uriHelper: _uriProductHelper,
+    type: SearchProductsType.background,
   );
   if (searchResult.products == null || searchResult.count == null) {
     throw Exception(&#39;Cannot refresh language&#39;);
   }
 
   &#47;&#47; save into database and refresh all visible products.
-  await daoProduct.putAll(searchResult.products!, language);
+  await daoProduct.putAll(
+    searchResult.products!,
+    language,
+    productType: productType,
+  );
   localDatabase.upToDate.setLatestDownloadedProducts(searchResult.products!);
 
   &#47;&#47; Next page

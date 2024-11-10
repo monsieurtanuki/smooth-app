@@ -71,13 +71,15 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@override
 Widget build(BuildContext context) {
-  final Color primaryColor = Theme.of(context).primaryColor;
+  final Color primaryColor =
+      Theme.of(context).extension&lt;SmoothColorsThemeExtension&gt;()!.primaryDark;
+  final Color tintColor = foregroundColor ?? Colors.white;
 
   return IconTheme(
-    data: IconThemeData(color: foregroundColor),
+    data: IconThemeData(color: tintColor),
     child: Container(
       height: suffix is SmoothModalSheetHeaderButton ? double.infinity : null,
-      color: backgroundColor ?? primaryColor.withOpacity(0.2),
+      color: backgroundColor ?? primaryColor,
       constraints: const BoxConstraints(minHeight: MIN_HEIGHT),
       padding: EdgeInsetsDirectional.only(
         start: (prefix?.requiresPadding == true ? 0 : VERY_LARGE_SPACE),
@@ -106,7 +108,7 @@ Widget build(BuildContext context) {
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         fontWeight: FontWeight.bold,
                         fontSize: 18.0,
-                        color: foregroundColor,
+                        color: tintColor,
                       ),
                 ),
               ),

@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the getButtonColor method from the ProductCompatibilityHelper class, for the Dart programming language.">
-  <title>getButtonColor method - ProductCompatibilityHelper class - product_compatibility_helper library - Dart API</title>
+  <meta name="description" content="API docs for the getColor method from the ProductCompatibilityHelper class, for the Dart programming language.">
+  <title>getColor method - ProductCompatibilityHelper class - product_compatibility_helper library - Dart API</title>
 
 
   
@@ -31,9 +31,9 @@
     <li><a href="../../index.html">smooth_app</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_product_compatibility_helper/file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_product_compatibility_helper-library.html">product_compatibility_helper</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_product_compatibility_helper/ProductCompatibilityHelper-class.html">ProductCompatibilityHelper</a></li>
-    <li class="self-crumb">getButtonColor method</li>
+    <li class="self-crumb">getColor method</li>
   </ol>
-  <div class="self-name">getButtonColor</div>
+  <div class="self-name">getColor</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -44,7 +44,7 @@
 
   <div id="dartdoc-main-content" class="main-content">
       <div>
-<h1><span class="kind-method">getButtonColor</span> method 
+<h1><span class="kind-method">getColor</span> method 
     <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
@@ -52,7 +52,7 @@
       
 
 <span class="returntype">dynamic</span>
-<span class="name ">getButtonColor</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getButtonColor-param-darkMode"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">darkMode</span></span></li>
+<span class="name ">getColor</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getColor-param-context"><span class="type-annotation">dynamic</span> <span class="parameter-name">context</span></span></li>
 </ol>)
 
       
@@ -64,12 +64,18 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Color getButtonColor(bool darkMode) {
-  if (darkMode) {
-    return _getLightColors();
-  } else {
-    return _getDarkColors();
-  }
+  <pre class="language-dart"><code class="language-dart">Color getColor(BuildContext context) {
+  final SmoothColorsThemeExtension theme =
+      Theme.of(context).extension&lt;SmoothColorsThemeExtension&gt;()!;
+
+  return switch (status) {
+    MatchedProductStatusV2.VERY_GOOD_MATCH =&gt; theme.green,
+    MatchedProductStatusV2.GOOD_MATCH =&gt; theme.green,
+    MatchedProductStatusV2.POOR_MATCH =&gt; theme.orange,
+    MatchedProductStatusV2.MAY_NOT_MATCH =&gt; theme.orange,
+    MatchedProductStatusV2.DOES_NOT_MATCH =&gt; theme.red,
+    MatchedProductStatusV2.UNKNOWN_MATCH =&gt; theme.greyNormal,
+  };
 }</code></pre>
 </section>
 
@@ -87,7 +93,7 @@
   <li><a href="../../index.html">smooth_app</a></li>
   <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_product_compatibility_helper/file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_product_compatibility_helper-library.html">product_compatibility_helper</a></li>
   <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_product_compatibility_helper/ProductCompatibilityHelper-class.html">ProductCompatibilityHelper</a></li>
-  <li class="self-crumb">getButtonColor method</li>
+  <li class="self-crumb">getColor method</li>
 </ol>
 
 
@@ -107,9 +113,8 @@
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_product_compatibility_helper/ProductCompatibilityHelper/status.html">status</a></li>
 
     <li class="section-title"><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_product_compatibility_helper/ProductCompatibilityHelper-class.html#instance-methods">Methods</a></li>
-    <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_product_compatibility_helper/ProductCompatibilityHelper/getButtonColor.html">getButtonColor</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_product_compatibility_helper/ProductCompatibilityHelper/getButtonForegroundColor.html">getButtonForegroundColor</a></li>
-    <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_product_compatibility_helper/ProductCompatibilityHelper/getHeaderBackgroundColor.html">getHeaderBackgroundColor</a></li>
+    <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_product_compatibility_helper/ProductCompatibilityHelper/getColor.html">getColor</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_product_compatibility_helper/ProductCompatibilityHelper/getHeaderForegroundColor.html">getHeaderForegroundColor</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_product_compatibility_helper/ProductCompatibilityHelper/getHeaderText.html">getHeaderText</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_product_compatibility_helper/ProductCompatibilityHelper/getSubtitle.html">getSubtitle</a></li>

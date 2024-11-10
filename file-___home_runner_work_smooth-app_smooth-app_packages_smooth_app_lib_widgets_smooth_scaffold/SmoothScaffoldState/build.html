@@ -127,6 +127,10 @@ Widget build(BuildContext context) {
     }
   }
 
+  if (!_changeStatusBarBrightness) {
+    return child;
+  }
+
   return AnnotatedRegion&lt;SystemUiOverlayStyle&gt;(
     value: _overlayStyle,
     child: Theme(

@@ -54,7 +54,7 @@
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
 <span class="name ">putAll</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="putAll-param-products"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a></span> <span class="parameter-name">products</span>, </span></li>
 <li><span class="parameter" id="putAll-param-language"><span class="type-annotation">dynamic</span> <span class="parameter-name">language</span>, </span></li>
-<li><span class="parameter" id="putAll-param-productType">{<span class="type-annotation">dynamic</span> <span class="parameter-name">productType</span>}</span></li>
+<li><span class="parameter" id="putAll-param-productType">{<span>required</span> <span class="type-annotation">dynamic</span> <span class="parameter-name">productType</span>}</span></li>
 </ol>)
 
       
@@ -72,12 +72,10 @@
   <pre class="language-dart"><code class="language-dart">Future&lt;void&gt; putAll(
   final Iterable&lt;Product&gt; products,
   final OpenFoodFactsLanguage language, {
-  final ProductType? productType,
+  required final ProductType productType,
 }) async {
-  if (productType != null) {
-    for (final Product product in products) {
-      product.productType = productType;
-    }
+  for (final Product product in products) {
+    product.productType = productType;
   }
   await localDatabase.database.transaction(
     (final Transaction transaction) async =&gt; _bulkReplaceLoop(

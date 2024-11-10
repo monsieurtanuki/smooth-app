@@ -71,7 +71,8 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@override
 Future&lt;void&gt; execute(final LocalDatabase localDatabase) async {
-  final SearchResult searchResult = await OpenFoodAPIClient.searchProducts(
+  final SearchResult searchResult =
+      await SearchProductsManager.searchProducts(
     ProductQuery.getReadUser(),
     ProductSearchQueryConfiguration(
       fields: &lt;ProductField&gt;[ProductField.BARCODE],
@@ -85,6 +86,7 @@ Future&lt;void&gt; execute(final LocalDatabase localDatabase) async {
       version: ProductQuery.productQueryVersion,
     ),
     uriHelper: uriProductHelper,
+    type: SearchProductsType.background,
   );
   if (searchResult.products == null || searchResult.count == null) {
     throw Exception(&#39;Cannot download top barcodes&#39;);

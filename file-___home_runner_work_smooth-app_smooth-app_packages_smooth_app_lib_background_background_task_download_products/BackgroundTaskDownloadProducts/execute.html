@@ -88,7 +88,8 @@ Future&lt;void&gt; execute(final LocalDatabase localDatabase) async {
     fields.remove(ProductField.KNOWLEDGE_PANELS);
   }
   final OpenFoodFactsLanguage language = ProductQuery.getLanguage();
-  final SearchResult searchResult = await OpenFoodAPIClient.searchProducts(
+  final SearchResult searchResult =
+      await SearchProductsManager.searchProducts(
     ProductQuery.getReadUser(),
     ProductSearchQueryConfiguration(
       fields: fields,
@@ -102,6 +103,7 @@ Future&lt;void&gt; execute(final LocalDatabase localDatabase) async {
       version: ProductQuery.productQueryVersion,
     ),
     uriHelper: uriProductHelper,
+    type: SearchProductsType.background,
   );
   final List&lt;Product&gt;? downloadedProducts = searchResult.products;
   if (downloadedProducts == null) {

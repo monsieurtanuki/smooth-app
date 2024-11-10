@@ -74,7 +74,6 @@ Widget build(BuildContext context) {
   final ExternalScanCarouselManagerState carouselManager =
       ExternalScanCarouselManager.read(context);
   carouselManager.currentBarcode = barcode;
-  final ThemeData themeData = Theme.of(context);
   final SmoothColorsThemeExtension themeExtension =
       Theme.of(context).extension&lt;SmoothColorsThemeExtension&gt;()!;
 
@@ -82,79 +81,63 @@ Widget build(BuildContext context) {
   context.watch&lt;LocalDatabase&gt;();
   refreshUpToDate();
 
+  final MatchedProductV2 matchedProductV2 = MatchedProductV2(
+    upToDateProduct,
+    _productPreferences,
+  );
+
   return MultiProvider(
-    providers: &lt;Provider&lt;dynamic&gt;&gt;[
+    providers: &lt;SingleChildWidget&gt;[
       Provider&lt;Product&gt;.value(value: upToDateProduct),
       Provider&lt;ProductPageState&gt;.value(value: this),
-    ],
-    child: Provider&lt;Product&gt;.value(
-      value: upToDateProduct,
-      child: SmoothScaffold(
-        contentBehindStatusBar: true,
-        spaceBehindStatusBar: false,
-        statusBarBackgroundColor: SmoothScaffold.semiTranslucentStatusBar,
-        backgroundColor:
-            !context.darkTheme() ? themeExtension.primaryLight : null,
-        body: Stack(
-          children: &lt;Widget&gt;[
-            NotificationListener&lt;UserScrollNotification&gt;(
-              onNotification: (UserScrollNotification notification) {
-                if (notification.direction == ScrollDirection.forward) {
-                  if (!scrollingUp) {
-                    setState(() =&gt; scrollingUp = true);
-                  }
-                } else if (notification.direction ==
-                    ScrollDirection.reverse) {
-                  if (scrollingUp) {
-                    setState(() =&gt; scrollingUp = false);
-                  }
-                }
-                return true;
-              },
-              child: _buildProductBody(context),
-            ),
-            Padding(
-              padding: const EdgeInsetsDirectional.only(start: SMALL_SPACE),
-              child: SafeArea(
-                child: AnimatedContainer(
-                  duration: SmoothAnimationsDuration.short,
-                  width: kToolbarHeight,
-                  height: kToolbarHeight,
-                  decoration: BoxDecoration(
-                    color: scrollingUp
-                        ? themeData.primaryColor
-                        : Colors.transparent,
-                    shape: BoxShape.circle,
-                  ),
-                  child: Offstage(
-                    offstage: !scrollingUp,
-                    child: const SmoothBackButton(iconColor: Colors.white),
-                  ),
-                ),
-              ),
-            ),
-            if (questionsLayout == ProductQuestionsLayout.banner)
-              Positioned.directional(
-                start: 0.0,
-                end: 0.0,
-                bottom: 0.0,
-                textDirection: Directionality.of(context),
-                child: MeasureSize(
-                  onChange: (Size size) {
-                    if (size.height != bottomPadding) {
-                      setState(() =&gt; bottomPadding = size.height);
-                    }
-                  },
-                  child: ProductQuestionsWidget(
-                    upToDateProduct,
-                    layout: ProductQuestionsLayout.banner,
-                  ),
-                ),
-              ),
-          ],
+      Provider&lt;ProductPageCompatibility&gt;.value(
+        value: ProductPageCompatibility(
+          color: ProductCompatibilityHelper.product(
+            matchedProductV2,
+          ).getColor(context),
+          score: matchedProductV2.score,
         ),
-        bottomNavigationBar: const ProductFooter(),
       ),
+      ChangeNotifierProvider&lt;ScrollController&gt;.value(
+        value: _scrollController,
+      ),
+    ],
+    child: SmoothScaffold(
+      contentBehindStatusBar: true,
+      spaceBehindStatusBar: false,
+      changeStatusBarBrightness: false,
+      statusBarBackgroundColor: Colors.transparent,
+      backgroundColor:
+          !context.darkTheme() ? themeExtension.primaryLight : null,
+      body: Stack(
+        children: &lt;Widget&gt;[
+          _buildProductBody(context),
+          const Positioned(
+            left: 0.0,
+            right: 0.0,
+            top: 0.0,
+            child: ProductHeader(),
+          ),
+          if (questionsLayout == ProductQuestionsLayout.banner)
+            Positioned(
+              left: 0.0,
+              right: 0.0,
+              bottom: 0.0,
+              child: MeasureSize(
+                onChange: (Size size) {
+                  if (size.height != bottomPadding) {
+                    setState(() =&gt; bottomPadding = size.height);
+                  }
+                },
+                child: ProductQuestionsWidget(
+                  upToDateProduct,
+                  layout: ProductQuestionsLayout.banner,
+                ),
+              ),
+            ),
+        ],
+      ),
+      bottomNavigationBar: const ProductFooter(),
     ),
   );
 }</code></pre>
@@ -193,7 +176,6 @@ Widget build(BuildContext context) {
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_pages_product_product_page_new_product_page/ProductPageState/questionsLayout.html">questionsLayout</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
-    <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_pages_product_product_page_new_product_page/ProductPageState/scrollingUp.html">scrollingUp</a></li>
 
     <li class="section-title"><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_pages_product_product_page_new_product_page/ProductPageState-class.html#instance-methods">Methods</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_pages_product_product_page_new_product_page/ProductPageState/build.html">build</a></li>

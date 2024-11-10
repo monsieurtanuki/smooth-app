@@ -85,12 +85,13 @@ Future&lt;int?&gt; getServerCount() async {
   );
 
   try {
-    final SearchResult result = await OpenFoodAPIClient.searchProducts(
+    final SearchResult result = await SearchProductsManager.searchProducts(
       user,
       configuration,
       uriHelper: ProductQuery.getUriProductHelper(
         productType: ProductType.food,
       ),
+      type: SearchProductsType.count,
     );
     return result.count;
   } catch (e) {

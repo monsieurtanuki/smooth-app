@@ -55,7 +55,10 @@
 <span class="name ">showSmoothDraggableModalSheet</span>&lt;<wbr><span class="type-parameter">T</span>&gt;(<wbr><ol class="parameter-list"><li><span class="parameter" id="showSmoothDraggableModalSheet-param-context">{<span>required</span> <span class="type-annotation">dynamic</span> <span class="parameter-name">context</span>, </span></li>
 <li><span class="parameter" id="showSmoothDraggableModalSheet-param-header"><span>required</span> <span class="type-annotation"><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_generic_lib_bottom_sheets_smooth_bottom_sheet/SmoothModalSheetHeader-class.html">SmoothModalSheetHeader</a></span> <span class="parameter-name">header</span>, </span></li>
 <li><span class="parameter" id="showSmoothDraggableModalSheet-param-bodyBuilder"><span>required</span> <span class="type-annotation">dynamic</span> <span class="parameter-name">bodyBuilder</span>, </span></li>
-<li><span class="parameter" id="showSmoothDraggableModalSheet-param-initHeight"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">initHeight</span>}</span></li>
+<li><span class="parameter" id="showSmoothDraggableModalSheet-param-initHeight"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">initHeight</span>, </span></li>
+<li><span class="parameter" id="showSmoothDraggableModalSheet-param-minHeight"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">minHeight</span>, </span></li>
+<li><span class="parameter" id="showSmoothDraggableModalSheet-param-maxHeight"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">maxHeight</span>, </span></li>
+<li><span class="parameter" id="showSmoothDraggableModalSheet-param-draggableScrollableController"><span class="type-annotation">dynamic</span> <span class="parameter-name">draggableScrollableController</span>}</span></li>
 </ol>)
 
     </section>
@@ -72,14 +75,20 @@
   &#47;&#47;&#47; You must return a Sliver Widget
   required WidgetBuilder bodyBuilder,
   double? initHeight,
+  double? minHeight,
+  double? maxHeight,
+  DraggableScrollableController? draggableScrollableController,
 }) {
   return showDraggableModalSheet&lt;T&gt;(
     context: context,
+    draggableScrollableController: draggableScrollableController,
     borderRadius: const BorderRadius.vertical(top: ROUNDED_RADIUS),
     headerBuilder: (_) =&gt; header,
     headerHeight: header.computeHeight(context),
     bodyBuilder: bodyBuilder,
     initHeight: initHeight,
+    minHeight: minHeight,
+    maxHeight: maxHeight,
   );
 }</code></pre>
 </section>
