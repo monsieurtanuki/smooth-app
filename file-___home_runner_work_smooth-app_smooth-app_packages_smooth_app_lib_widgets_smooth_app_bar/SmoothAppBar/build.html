@@ -73,6 +73,19 @@
 Widget build(BuildContext context) {
   final ModalRoute&lt;dynamic&gt;? parentRoute = ModalRoute.of(context);
 
+  Widget child = actionMode
+      ? _createActionModeAppBar(context)
+      : _createAppBar(context, parentRoute);
+
+  &#47;&#47;&#47; Elevation support is removed with Material 3.0
+  if (elevation &gt; 0.0) {
+    child = Material(
+      color: elevationColor,
+      elevation: elevation,
+      child: child,
+    );
+  }
+
   return AnimatedSwitcher(
     duration: const Duration(milliseconds: 100),
     transitionBuilder: (Widget child, Animation&lt;double&gt; animation) {
@@ -84,9 +97,7 @@ Widget build(BuildContext context) {
         child: child,
       );
     },
-    child: actionMode
-        ? _createActionModeAppBar(context)
-        : _createAppBar(context, parentRoute),
+    child: child,
   );
 }</code></pre>
 </section>
@@ -133,6 +144,7 @@ Widget build(BuildContext context) {
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_widgets_smooth_app_bar/SmoothAppBar/centerTitle.html">centerTitle</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_widgets_smooth_app_bar/SmoothAppBar/clipBehavior.html">clipBehavior</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_widgets_smooth_app_bar/SmoothAppBar/elevation.html">elevation</a></li>
+    <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_widgets_smooth_app_bar/SmoothAppBar/elevationColor.html">elevationColor</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_widgets_smooth_app_bar/SmoothAppBar/excludeHeaderSemantics.html">excludeHeaderSemantics</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_widgets_smooth_app_bar/SmoothAppBar/flexibleSpace.html">flexibleSpace</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_widgets_smooth_app_bar/SmoothAppBar/forceMaterialTransparency.html">forceMaterialTransparency</a></li>

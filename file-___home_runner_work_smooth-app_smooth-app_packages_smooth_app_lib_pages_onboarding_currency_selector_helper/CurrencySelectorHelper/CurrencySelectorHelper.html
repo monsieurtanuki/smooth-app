@@ -31,7 +31,7 @@
     <li><a href="../../index.html">smooth_app</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_pages_onboarding_currency_selector_helper/file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_pages_onboarding_currency_selector_helper-library.html">currency_selector_helper</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_pages_onboarding_currency_selector_helper/CurrencySelectorHelper-class.html">CurrencySelectorHelper</a></li>
-    <li class="self-crumb">CurrencySelectorHelper constructor</li>
+    <li class="self-crumb">CurrencySelectorHelper factory constructor</li>
   </ol>
   <div class="self-name">CurrencySelectorHelper</div>
   <form class="search navbar-right" role="search">
@@ -58,7 +58,10 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">CurrencySelectorHelper();</code></pre>
+  <pre class="language-dart"><code class="language-dart">factory CurrencySelectorHelper() {
+  _instance ??= CurrencySelectorHelper._();
+  return _instance!;
+}</code></pre>
 </section>
 
 
@@ -75,7 +78,7 @@
   <li><a href="../../index.html">smooth_app</a></li>
   <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_pages_onboarding_currency_selector_helper/file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_pages_onboarding_currency_selector_helper-library.html">currency_selector_helper</a></li>
   <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_pages_onboarding_currency_selector_helper/CurrencySelectorHelper-class.html">CurrencySelectorHelper</a></li>
-  <li class="self-crumb">CurrencySelectorHelper constructor</li>
+  <li class="self-crumb">CurrencySelectorHelper factory constructor</li>
 </ol>
 
 

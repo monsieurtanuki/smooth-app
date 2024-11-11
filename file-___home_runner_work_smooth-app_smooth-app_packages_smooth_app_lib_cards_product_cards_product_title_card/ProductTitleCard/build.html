@@ -71,7 +71,7 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@override
 Widget build(BuildContext context) {
-  final Widget title = _ProductTitleCardTrailing(
+  final Widget trailing = _ProductTitleCardTrailing(
     removable: isRemovable,
     selectable: isSelectable,
     onRemove: onRemove,
@@ -90,7 +90,7 @@ Widget build(BuildContext context) {
               dense: dense,
             ),
           ),
-          title,
+          trailing,
         ],
       ),
       _ProductTitleCardBrand(
@@ -101,27 +101,47 @@ Widget build(BuildContext context) {
   } else {
     children = &lt;Widget&gt;[
       Padding(
-        padding: const EdgeInsetsDirectional.only(top: VERY_SMALL_SPACE),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: &lt;Widget&gt;[
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: &lt;Widget&gt;[
-                  _ProductTitleCardName(
-                    selectable: isSelectable,
-                    dense: dense,
+        padding: const EdgeInsetsDirectional.only(top: SMALL_SPACE),
+        child: IntrinsicHeight(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: &lt;Widget&gt;[
+              const _ProductTitleCardPicture(),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsetsDirectional.only(
+                    start: SMALL_SPACE,
+                    top: VERY_SMALL_SPACE,
+                    bottom: VERY_SMALL_SPACE,
                   ),
-                  _ProductTitleCardBrand(
-                    removable: isRemovable,
-                    selectable: isSelectable,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: &lt;Widget&gt;[
+                      ConstrainedBox(
+                        constraints: BoxConstraints(
+                          minHeight:
+                              DefaultTextStyle.of(context).style.fontSize! *
+                                  2.0,
+                        ),
+                        child: _ProductTitleCardName(
+                          selectable: isSelectable,
+                          dense: dense,
+                        ),
+                      ),
+                      const SizedBox(height: SMALL_SPACE),
+                      _ProductTitleCardBrand(
+                        removable: isRemovable,
+                        selectable: isSelectable,
+                      ),
+                      const SizedBox(height: 2.0),
+                      trailing,
+                    ],
                   ),
-                ],
+                ),
               ),
-            ),
-            title,
-          ],
+            ],
+          ),
         ),
       ),
     ];

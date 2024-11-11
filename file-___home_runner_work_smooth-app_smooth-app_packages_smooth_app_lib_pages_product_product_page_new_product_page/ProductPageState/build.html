@@ -95,7 +95,7 @@ Widget build(BuildContext context) {
           color: ProductCompatibilityHelper.product(
             matchedProductV2,
           ).getColor(context),
-          score: matchedProductV2.score,
+          matchedProductV2: matchedProductV2,
         ),
       ),
       ChangeNotifierProvider&lt;ScrollController&gt;.value(
@@ -111,7 +111,7 @@ Widget build(BuildContext context) {
           !context.darkTheme() ? themeExtension.primaryLight : null,
       body: Stack(
         children: &lt;Widget&gt;[
-          _buildProductBody(context),
+          _buildProductBody(context, bottomPadding),
           const Positioned(
             left: 0.0,
             right: 0.0,
