@@ -249,7 +249,7 @@ Logging:</p>
 </dd>
 
         <dt id="trackCustomEvent" class="callable">
-  <span class="name"><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_analytics_helper/AnalyticsHelper/trackCustomEvent.html">trackCustomEvent</a></span><span class="signature">(<wbr><span class="parameter" id="trackCustomEvent-param-msg"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">msg</span>, </span><span class="parameter" id="trackCustomEvent-param-category"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">category</span>, </span><span class="parameter" id="trackCustomEvent-param-eventValue">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">eventValue</span>, </span><span class="parameter" id="trackCustomEvent-param-barcode"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">barcode</span>}</span>)
+  <span class="name"><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_analytics_helper/AnalyticsHelper/trackCustomEvent.html">trackCustomEvent</a></span><span class="signature">(<wbr><span class="parameter" id="trackCustomEvent-param-msg"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">msg</span>, </span><span class="parameter" id="trackCustomEvent-param-category"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">category</span>, </span><span class="parameter" id="trackCustomEvent-param-eventValue">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">eventValue</span>, </span><span class="parameter" id="trackCustomEvent-param-barcode"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">barcode</span>, </span><span class="parameter" id="trackCustomEvent-param-action"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">action</span>, </span><span class="parameter" id="trackCustomEvent-param-productType"><span class="type-annotation">dynamic</span> <span class="parameter-name">productType</span>}</span>)
     <span class="returntype parameter">&#8594; void</span>
   </span>
   
@@ -288,7 +288,20 @@ Logging:</p>
 </dd>
 
         <dt id="trackProductEdit" class="callable">
-  <span class="name"><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_analytics_helper/AnalyticsHelper/trackProductEdit.html">trackProductEdit</a></span><span class="signature">(<wbr><span class="parameter" id="trackProductEdit-param-editEventName"><span class="type-annotation"><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_analytics_helper/AnalyticsEditEvents.html">AnalyticsEditEvents</a></span> <span class="parameter-name">editEventName</span>, </span><span class="parameter" id="trackProductEdit-param-barcode"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">barcode</span>, </span><span class="parameter" id="trackProductEdit-param-saved">[<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">saved</span> = <span class="default-value">false</span>]</span>)
+  <span class="name"><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_analytics_helper/AnalyticsHelper/trackProductEdit.html">trackProductEdit</a></span><span class="signature">(<wbr><span class="parameter" id="trackProductEdit-param-editEventName"><span class="type-annotation"><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_analytics_helper/AnalyticsEditEvents.html">AnalyticsEditEvents</a></span> <span class="parameter-name">editEventName</span>, </span><span class="parameter" id="trackProductEdit-param-product"><span class="type-annotation">dynamic</span> <span class="parameter-name">product</span>, </span><span class="parameter" id="trackProductEdit-param-saved">[<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">saved</span> = <span class="default-value">false</span>]</span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  
+  
+
+</dd>
+
+        <dt id="trackProductEvent" class="callable">
+  <span class="name"><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_analytics_helper/AnalyticsHelper/trackProductEvent.html">trackProductEvent</a></span><span class="signature">(<wbr><span class="parameter" id="trackProductEvent-param-msg"><span class="type-annotation"><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_analytics_helper/AnalyticsEvent.html">AnalyticsEvent</a></span> <span class="parameter-name">msg</span>, </span><span class="parameter" id="trackProductEvent-param-eventValue">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">eventValue</span>, </span><span class="parameter" id="trackProductEvent-param-product"><span>required</span> <span class="type-annotation">dynamic</span> <span class="parameter-name">product</span>}</span>)
     <span class="returntype parameter">&#8594; void</span>
   </span>
   
@@ -387,6 +400,7 @@ Logging:</p>
           <li><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_analytics_helper/AnalyticsHelper/trackEvent.html">trackEvent</a></li>
           <li><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_analytics_helper/AnalyticsHelper/trackOutlink.html">trackOutlink</a></li>
           <li><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_analytics_helper/AnalyticsHelper/trackProductEdit.html">trackProductEdit</a></li>
+          <li><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_analytics_helper/AnalyticsHelper/trackProductEvent.html">trackProductEvent</a></li>
           <li><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_analytics_helper/AnalyticsHelper/trackSearch.html">trackSearch</a></li>
 
 </ol>

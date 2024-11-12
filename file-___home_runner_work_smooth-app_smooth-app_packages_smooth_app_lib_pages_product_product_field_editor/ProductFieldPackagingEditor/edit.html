@@ -89,7 +89,7 @@ Future&lt;void&gt; edit({
 
   AnalyticsHelper.trackProductEdit(
     AnalyticsEditEvents.packagingComponents,
-    product.barcode!,
+    product,
   );
 
   if (!context.mounted) {

@@ -89,7 +89,7 @@ Future&lt;void&gt; edit({
 
   AnalyticsHelper.trackProductEdit(
     helper.getEditEventAnalyticsTag(),
-    product.barcode!,
+    product,
   );
 
   if (!context.mounted) {

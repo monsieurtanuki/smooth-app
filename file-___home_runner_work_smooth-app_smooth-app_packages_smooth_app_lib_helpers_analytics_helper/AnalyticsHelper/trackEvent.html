@@ -71,13 +71,11 @@
   int? eventValue,
   String? barcode,
 }) =&gt;
-    MatomoTracker.instance.trackEvent(
-      eventInfo: EventInfo(
-        name: msg.name,
-        category: msg.category.tag,
-        action: msg.name,
-        value: eventValue ?? _formatBarcode(barcode),
-      ),
+    trackCustomEvent(
+      msg.name,
+      msg.category.tag,
+      eventValue: eventValue,
+      barcode: barcode,
     );</code></pre>
 </section>
 
@@ -132,6 +130,7 @@
           <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_analytics_helper/AnalyticsHelper/trackEvent.html">trackEvent</a></li>
           <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_analytics_helper/AnalyticsHelper/trackOutlink.html">trackOutlink</a></li>
           <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_analytics_helper/AnalyticsHelper/trackProductEdit.html">trackProductEdit</a></li>
+          <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_analytics_helper/AnalyticsHelper/trackProductEvent.html">trackProductEvent</a></li>
           <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_helpers_analytics_helper/AnalyticsHelper/trackSearch.html">trackSearch</a></li>
 
 </ol>
