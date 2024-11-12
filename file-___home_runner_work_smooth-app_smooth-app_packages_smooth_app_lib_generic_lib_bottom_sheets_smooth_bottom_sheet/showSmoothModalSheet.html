@@ -54,7 +54,8 @@
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">T?</span>&gt;</span></span>
 <span class="name ">showSmoothModalSheet</span>&lt;<wbr><span class="type-parameter">T</span>&gt;(<wbr><ol class="parameter-list"><li><span class="parameter" id="showSmoothModalSheet-param-context">{<span>required</span> <span class="type-annotation">dynamic</span> <span class="parameter-name">context</span>, </span></li>
 <li><span class="parameter" id="showSmoothModalSheet-param-builder"><span>required</span> <span class="type-annotation">dynamic</span> <span class="parameter-name">builder</span>, </span></li>
-<li><span class="parameter" id="showSmoothModalSheet-param-minHeight"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">minHeight</span>}</span></li>
+<li><span class="parameter" id="showSmoothModalSheet-param-minHeight"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">minHeight</span>, </span></li>
+<li><span class="parameter" id="showSmoothModalSheet-param-maxHeight"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">maxHeight</span>}</span></li>
 </ol>)
 
     </section>
@@ -68,10 +69,28 @@
   required BuildContext context,
   required WidgetBuilder builder,
   double? minHeight,
+  double? maxHeight,
 }) {
+  BoxConstraints? constraints;
+
+  &#47;&#47; We can&#39;t provide a null value to a [BoxConstraints] constructor
+  if (minHeight != null &amp;&amp; maxHeight != null) {
+    constraints = BoxConstraints(
+      minHeight: minHeight,
+      maxHeight: maxHeight,
+    );
+  } else if (minHeight != null) {
+    constraints = BoxConstraints(
+      minHeight: minHeight,
+    );
+  } else if (maxHeight != null) {
+    constraints = BoxConstraints(
+      maxHeight: maxHeight,
+    );
+  }
+
   return showModalBottomSheet&lt;T&gt;(
-    constraints:
-        minHeight != null ? BoxConstraints(minHeight: minHeight) : null,
+    constraints: constraints,
     isScrollControlled: minHeight != null,
     context: context,
     shape: const RoundedRectangleBorder(

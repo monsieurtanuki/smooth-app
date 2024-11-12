@@ -72,9 +72,10 @@
   }
 
   await HapticFeedback.heavyImpact();
-  return Future&lt;void&gt;.delayed(const Duration(milliseconds: 50), () {
-    HapticFeedback.heavyImpact();
-  });
+  await Future&lt;void&gt;.delayed(const Duration(milliseconds: 150));
+  await HapticFeedback.heavyImpact();
+  await Future&lt;void&gt;.delayed(const Duration(milliseconds: 150));
+  return HapticFeedback.heavyImpact();
 }</code></pre>
 </section>
 

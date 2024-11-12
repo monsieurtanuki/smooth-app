@@ -108,7 +108,10 @@ Widget build(BuildContext context) {
         message: MaterialLocalizations.of(context).closeButtonTooltip,
         enableFeedback: true,
         child: InkWell(
-          onTap: () =&gt; Navigator.of(context).pop(),
+          onTap: () {
+            SmoothHapticFeedback.click();
+            Navigator.of(context).pop();
+          },
           customBorder: const CircleBorder(),
           child: icon,
         ),
