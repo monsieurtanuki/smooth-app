@@ -88,7 +88,7 @@ Widget build(BuildContext context) {
   return Icon(
     icon,
     color: color,
-    size: size ?? iconTheme?.size,
+    size: size ?? iconTheme?.size ?? iconThemeData.size,
     semanticLabel: iconTheme?.semanticLabel ?? semanticLabel,
     shadows: shadow != null
         ? &lt;Shadow&gt;[shadow!]

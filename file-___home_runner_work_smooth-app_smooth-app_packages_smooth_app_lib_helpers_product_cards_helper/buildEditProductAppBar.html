@@ -54,7 +54,9 @@
 <span class="returntype">dynamic</span>
 <span class="name ">buildEditProductAppBar</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="buildEditProductAppBar-param-context">{<span>required</span> <span class="type-annotation">dynamic</span> <span class="parameter-name">context</span>, </span></li>
 <li><span class="parameter" id="buildEditProductAppBar-param-title"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">title</span>, </span></li>
-<li><span class="parameter" id="buildEditProductAppBar-param-product"><span>required</span> <span class="type-annotation">dynamic</span> <span class="parameter-name">product</span>}</span></li>
+<li><span class="parameter" id="buildEditProductAppBar-param-product"><span>required</span> <span class="type-annotation">dynamic</span> <span class="parameter-name">product</span>, </span></li>
+<li><span class="parameter" id="buildEditProductAppBar-param-bottom"><span class="type-annotation">dynamic</span> <span class="parameter-name">bottom</span>, </span></li>
+<li><span class="parameter" id="buildEditProductAppBar-param-actions"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a>?</span> <span class="parameter-name">actions</span>}</span></li>
 </ol>)
 
     </section>
@@ -68,6 +70,8 @@
   required final BuildContext context,
   required final String title,
   required final Product product,
+  final PreferredSizeWidget? bottom,
+  final List&lt;Widget&gt;? actions,
 }) =&gt;
     SmoothAppBar(
       centerTitle: false,
@@ -81,6 +85,8 @@
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       ),
+      actions: actions,
+      bottom: bottom,
       ignoreSemanticsForSubtitle: true,
     );</code></pre>
 </section>

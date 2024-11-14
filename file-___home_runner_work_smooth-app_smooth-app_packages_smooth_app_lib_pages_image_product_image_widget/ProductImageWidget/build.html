@@ -72,7 +72,7 @@
   <pre class="language-dart"><code class="language-dart">@override
 Widget build(BuildContext context) {
   final SmoothColorsThemeExtension colors =
-      Theme.of(context).extension&lt;SmoothColorsThemeExtension&gt;()!;
+      context.extension&lt;SmoothColorsThemeExtension&gt;();
   final AppLocalizations appLocalizations = AppLocalizations.of(context);
   final DateFormat dateFormat =
       DateFormat.yMd(ProductQuery.getLanguage().offTag);
@@ -142,7 +142,7 @@ Widget build(BuildContext context) {
                         textDirection: Directionality.of(context),
                         child: icons.Outdated(
                           size: 18.0,
-                          color: colors.red,
+                          color: colors.orange,
                         ),
                       ),
                   ],

@@ -49,7 +49,9 @@
 </h1></div>
 
     <section class="multi-line-signature">const
-      <span class="name ">CircledArrow.up</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="up-param-color">{<span class="type-annotation">dynamic</span> <span class="parameter-name">color</span>, </span></li>
+      <span class="name ">CircledArrow.up</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="up-param-type">{<span class="type-annotation"><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_resources_app_icons/CircledArrowType.html">CircledArrowType</a>?</span> <span class="parameter-name">type</span>, </span></li>
+<li><span class="parameter" id="up-param-circleColor"><span class="type-annotation">dynamic</span> <span class="parameter-name">circleColor</span>, </span></li>
+<li><span class="parameter" id="up-param-color"><span class="type-annotation">dynamic</span> <span class="parameter-name">color</span>, </span></li>
 <li><span class="parameter" id="up-param-size"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">size</span>, </span></li>
 <li><span class="parameter" id="up-param-shadow"><span class="type-annotation">dynamic</span> <span class="parameter-name">shadow</span>, </span></li>
 <li><span class="parameter" id="up-param-key"><span class="type-annotation">dynamic</span> <span class="parameter-name">key</span>}</span></li>
@@ -63,12 +65,21 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">const CircledArrow.up({
-  super.color,
-  super.size,
-  super.shadow,
-  super.key,
-})  : turns = 3,
-      super._(_IconsFont.circled_arrow);</code></pre>
+  CircledArrowType? type,
+  Color? circleColor,
+  Color? color,
+  double? size,
+  Shadow? shadow,
+  Key? key,
+}) : this._base(
+        type: type,
+        turns: 3,
+        circleColor: circleColor,
+        color: color,
+        size: size,
+        shadow: shadow,
+        key: key,
+      );</code></pre>
 </section>
 
 
@@ -102,14 +113,16 @@
     <li class="section-title">
       <a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_resources_app_icons/CircledArrow-class.html#instance-properties">Properties</a>
     </li>
+    <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_resources_app_icons/CircledArrow/circleColor.html">circleColor</a></li>
     <li class="inherited"><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_resources_app_icons/AppIcon/color.html">color</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
     <li class="inherited"><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_resources_app_icons/AppIcon/icon.html">icon</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
     <li class="inherited"><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_resources_app_icons/AppIcon/semanticLabel.html">semanticLabel</a></li>
     <li class="inherited"><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_resources_app_icons/AppIcon/shadow.html">shadow</a></li>
-    <li class="inherited"><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_resources_app_icons/AppIcon/size.html">size</a></li>
+    <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_resources_app_icons/CircledArrow/size.html">size</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_resources_app_icons/CircledArrow/turns.html">turns</a></li>
+    <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_resources_app_icons/CircledArrow/type.html">type</a></li>
 
     <li class="section-title"><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_resources_app_icons/CircledArrow-class.html#instance-methods">Methods</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_resources_app_icons/CircledArrow/build.html">build</a></li>

@@ -99,6 +99,9 @@ Widget build(BuildContext context) {
       ),
     ];
   } else {
+    final Size imageSize =
+        Size.square(MediaQuery.sizeOf(context).width * 0.25);
+
     children = &lt;Widget&gt;[
       Padding(
         padding: const EdgeInsetsDirectional.only(top: SMALL_SPACE),
@@ -106,7 +109,31 @@ Widget build(BuildContext context) {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: &lt;Widget&gt;[
-              const _ProductTitleCardPicture(),
+              TooltipTheme(
+                data: TooltipThemeData(
+                  verticalOffset: imageSize.width &#47; 2,
+                  preferBelow: true,
+                ),
+                child: ProductPicture(
+                  product: product,
+                  imageField: ImageField.FRONT,
+                  fallbackUrl: product.imageFrontUrl,
+                  size: imageSize,
+                  showObsoleteIcon: true,
+                  imageFoundBorder: 1.0,
+                  imageNotFoundBorder: 1.0,
+                  borderRadius: BorderRadius.circular(14.0),
+                  onTap: () async =&gt; Navigator.push&lt;void&gt;(
+                    context,
+                    MaterialPageRoute&lt;bool&gt;(
+                      builder: (BuildContext context) =&gt;
+                          ProductImageGalleryView(
+                        product: product,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsetsDirectional.only(
