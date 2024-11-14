@@ -73,18 +73,14 @@
 Widget build(BuildContext context) {
   final AppLocalizations appLocalizations = AppLocalizations.of(context);
 
-  return SafeArea(
-    child: SmoothActionButtonsBar(
-      axis: Axis.horizontal,
-      padding: const EdgeInsets.symmetric(horizontal: LARGE_SPACE),
-      positiveAction: SmoothActionButton(
-        text: appLocalizations.save,
-        onPressed: onSave,
-      ),
-      negativeAction: SmoothActionButton(
-        text: appLocalizations.cancel,
-        onPressed: onCancel,
-      ),
+  return SmoothButtonsBar2(
+    positiveButton: SmoothActionButton2(
+      text: appLocalizations.save,
+      onPressed: onSave,
+    ),
+    negativeButton: SmoothActionButton2(
+      text: appLocalizations.cancel,
+      onPressed: onCancel,
     ),
   );
 }</code></pre>
