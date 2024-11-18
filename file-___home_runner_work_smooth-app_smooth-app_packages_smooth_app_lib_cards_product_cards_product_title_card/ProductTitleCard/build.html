@@ -114,7 +114,7 @@ Widget build(BuildContext context) {
                   verticalOffset: imageSize.width &#47; 2,
                   preferBelow: true,
                 ),
-                child: ProductPicture(
+                child: ProductPicture.fromProduct(
                   product: product,
                   imageField: ImageField.FRONT,
                   fallbackUrl: product.imageFrontUrl,
