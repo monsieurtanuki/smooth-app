@@ -71,10 +71,14 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@override
 Widget build(BuildContext context) {
-  Widget result = Container(
-    padding: padding,
-    child: child,
-  );
+  Widget result = child;
+
+  if (padding != null) {
+    result = Padding(
+      padding: padding!,
+      child: result,
+    );
+  }
 
   if (ignoreDefaultSemantics) {
     result = Semantics(

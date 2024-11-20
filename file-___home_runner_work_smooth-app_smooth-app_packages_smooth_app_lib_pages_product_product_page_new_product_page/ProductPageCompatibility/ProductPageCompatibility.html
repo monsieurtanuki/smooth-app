@@ -64,9 +64,8 @@
   required Color color,
   required MatchedProductV2 matchedProductV2,
 })  : _color = color,
-      score = matchedProductV2.status != MatchedProductStatusV2.UNKNOWN_MATCH
-          ? matchedProductV2.score
-          : null;</code></pre>
+      score = ProductCompatibilityHelper.product(matchedProductV2)
+          .getFormattedScore();</code></pre>
 </section>
 
 

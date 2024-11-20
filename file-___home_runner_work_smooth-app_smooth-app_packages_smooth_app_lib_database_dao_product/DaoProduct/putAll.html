@@ -75,7 +75,9 @@
   required final ProductType productType,
 }) async {
   for (final Product product in products) {
-    product.productType = productType;
+    &#47;&#47; in case the server product has no product type, which shouldn&#39;t happen
+    &#47;&#47; in the future
+    product.productType ??= productType;
   }
   await localDatabase.database.transaction(
     (final Transaction transaction) async =&gt; _bulkReplaceLoop(

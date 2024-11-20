@@ -57,7 +57,8 @@
 <li><span class="parameter" id="buildProductSmoothCard-param-titlePadding"><span class="type-annotation">dynamic</span> <span class="parameter-name">titlePadding</span>, </span></li>
 <li><span class="parameter" id="buildProductSmoothCard-param-body"><span>required</span> <span class="type-annotation">dynamic</span> <span class="parameter-name">body</span>, </span></li>
 <li><span class="parameter" id="buildProductSmoothCard-param-padding"><span class="type-annotation">dynamic</span> <span class="parameter-name">padding</span> = <span class="default-value">EdgeInsets.zero</span>, </span></li>
-<li><span class="parameter" id="buildProductSmoothCard-param-margin"><span class="type-annotation">dynamic</span> <span class="parameter-name">margin</span> = <span class="default-value">const EdgeInsets.symmetric(horizontal: SMALL_SPACE)</span>}</span></li>
+<li><span class="parameter" id="buildProductSmoothCard-param-margin"><span class="type-annotation">dynamic</span> <span class="parameter-name">margin</span> = <span class="default-value">const EdgeInsets.symmetric(horizontal: SMALL_SPACE)</span>, </span></li>
+<li><span class="parameter" id="buildProductSmoothCard-param-borderRadius"><span class="type-annotation">dynamic</span> <span class="parameter-name">borderRadius</span>}</span></li>
 </ol>)
 
     </section>
@@ -79,6 +80,7 @@
   EdgeInsetsGeometry? margin = const EdgeInsets.symmetric(
     horizontal: SMALL_SPACE,
   ),
+  BorderRadius? borderRadius,
 }) {
   assert(
     (header != null &amp;&amp; title == null) || header == null,
@@ -113,6 +115,7 @@
   return SmoothCard(
     margin: margin,
     padding: padding,
+    borderRadius: borderRadius,
     child: child,
   );
 }</code></pre>

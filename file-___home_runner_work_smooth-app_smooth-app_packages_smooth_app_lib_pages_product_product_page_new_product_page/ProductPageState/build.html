@@ -112,11 +112,13 @@ Widget build(BuildContext context) {
       body: Stack(
         children: &lt;Widget&gt;[
           _buildProductBody(context, bottomPadding),
-          const Positioned(
+          Positioned(
             left: 0.0,
             right: 0.0,
             top: 0.0,
-            child: ProductHeader(),
+            child: ProductHeader(
+              backButtonType: widget.backButton,
+            ),
           ),
           if (questionsLayout == ProductQuestionsLayout.banner)
             Positioned(

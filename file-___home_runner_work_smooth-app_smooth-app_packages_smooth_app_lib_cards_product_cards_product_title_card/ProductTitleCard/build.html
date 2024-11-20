@@ -72,43 +72,22 @@
   <pre class="language-dart"><code class="language-dart">@override
 Widget build(BuildContext context) {
   final Widget trailing = _ProductTitleCardTrailing(
-    removable: isRemovable,
     selectable: isSelectable,
-    onRemove: onRemove,
   );
 
   final List&lt;Widget&gt; children;
 
-  if (dense) {
-    children = &lt;Widget&gt;[
-      Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: &lt;Widget&gt;[
-          Expanded(
-            child: _ProductTitleCardName(
-              selectable: isSelectable,
-              dense: dense,
-            ),
-          ),
-          trailing,
-        ],
-      ),
-      _ProductTitleCardBrand(
-        removable: isRemovable,
-        selectable: isSelectable,
-      ),
-    ];
-  } else {
-    final Size imageSize =
-        Size.square(MediaQuery.sizeOf(context).width * 0.25);
+  final Size imageSize =
+      Size.square(MediaQuery.sizeOf(context).width * (dense ? 0.22 : 0.25));
 
-    children = &lt;Widget&gt;[
-      Padding(
-        padding: const EdgeInsetsDirectional.only(top: SMALL_SPACE),
-        child: IntrinsicHeight(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: &lt;Widget&gt;[
+  children = &lt;Widget&gt;[
+    Padding(
+      padding: const EdgeInsetsDirectional.only(top: SMALL_SPACE),
+      child: IntrinsicHeight(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: &lt;Widget&gt;[
+            if (isPictureVisible)
               TooltipTheme(
                 data: TooltipThemeData(
                   verticalOffset: imageSize.width &#47; 2,
@@ -122,57 +101,58 @@ Widget build(BuildContext context) {
                   showObsoleteIcon: true,
                   imageFoundBorder: 1.0,
                   imageNotFoundBorder: 1.0,
+                  heroTag: heroTag,
                   borderRadius: BorderRadius.circular(14.0),
-                  onTap: () async =&gt; Navigator.push&lt;void&gt;(
-                    context,
-                    MaterialPageRoute&lt;bool&gt;(
-                      builder: (BuildContext context) =&gt;
-                          ProductImageGalleryView(
-                        product: product,
+                  onTap: !dense
+                      ? () async =&gt; Navigator.push&lt;void&gt;(
+                            context,
+                            MaterialPageRoute&lt;bool&gt;(
+                              builder: (BuildContext context) =&gt;
+                                  ProductImageGalleryView(
+                                product: product,
+                              ),
+                            ),
+                          )
+                      : null,
+                ),
+              ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsetsDirectional.only(
+                  start: SMALL_SPACE,
+                  top: VERY_SMALL_SPACE,
+                  bottom: VERY_SMALL_SPACE,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: &lt;Widget&gt;[
+                    ConstrainedBox(
+                      constraints: BoxConstraints(
+                        minHeight:
+                            DefaultTextStyle.of(context).style.fontSize! *
+                                2.0,
+                      ),
+                      child: _ProductTitleCardName(
+                        selectable: isSelectable,
+                        dense: dense,
                       ),
                     ),
-                  ),
+                    const SizedBox(height: SMALL_SPACE),
+                    _ProductTitleCardBrand(
+                      selectable: isSelectable,
+                    ),
+                    const SizedBox(height: 2.0),
+                    trailing,
+                  ],
                 ),
               ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsetsDirectional.only(
-                    start: SMALL_SPACE,
-                    top: VERY_SMALL_SPACE,
-                    bottom: VERY_SMALL_SPACE,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: &lt;Widget&gt;[
-                      ConstrainedBox(
-                        constraints: BoxConstraints(
-                          minHeight:
-                              DefaultTextStyle.of(context).style.fontSize! *
-                                  2.0,
-                        ),
-                        child: _ProductTitleCardName(
-                          selectable: isSelectable,
-                          dense: dense,
-                        ),
-                      ),
-                      const SizedBox(height: SMALL_SPACE),
-                      _ProductTitleCardBrand(
-                        removable: isRemovable,
-                        selectable: isSelectable,
-                      ),
-                      const SizedBox(height: 2.0),
-                      trailing,
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
-    ];
-  }
+    ),
+  ];
 
   return Provider&lt;Product&gt;.value(
     value: product,
@@ -217,7 +197,8 @@ Widget build(BuildContext context) {
     </li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_cards_product_cards_product_title_card/ProductTitleCard/dense.html">dense</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
-    <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_cards_product_cards_product_title_card/ProductTitleCard/isRemovable.html">isRemovable</a></li>
+    <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_cards_product_cards_product_title_card/ProductTitleCard/heroTag.html">heroTag</a></li>
+    <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_cards_product_cards_product_title_card/ProductTitleCard/isPictureVisible.html">isPictureVisible</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_cards_product_cards_product_title_card/ProductTitleCard/isSelectable.html">isSelectable</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_cards_product_cards_product_title_card/ProductTitleCard/onRemove.html">onRemove</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_cards_product_cards_product_title_card/ProductTitleCard/product.html">product</a></li>

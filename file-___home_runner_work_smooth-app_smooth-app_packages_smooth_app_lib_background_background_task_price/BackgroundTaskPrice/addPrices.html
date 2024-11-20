@@ -83,7 +83,7 @@ Future&lt;void&gt; addPrices({
       ..productCode = barcodes[i];
 
     &#47;&#47; create price
-    final MaybeError&lt;Price&gt; addedPrice =
+    final MaybeError&lt;Price?&gt; addedPrice =
         await OpenPricesAPIClient.createPrice(
       price: newPrice,
       bearerToken: bearerToken,
