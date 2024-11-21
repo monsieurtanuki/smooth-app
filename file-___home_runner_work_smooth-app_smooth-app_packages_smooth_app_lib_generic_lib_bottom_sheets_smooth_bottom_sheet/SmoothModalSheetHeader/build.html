@@ -72,15 +72,23 @@
   <pre class="language-dart"><code class="language-dart">@override
 Widget build(BuildContext context) {
   final Color primaryColor =
-      Theme.of(context).extension&lt;SmoothColorsThemeExtension&gt;()!.primaryDark;
+      context.extension&lt;SmoothColorsThemeExtension&gt;().primaryDark;
   final Color tintColor = foregroundColor ?? Colors.white;
 
   return IconTheme(
     data: IconThemeData(color: tintColor),
     child: Container(
       height: suffix is SmoothModalSheetHeaderButton ? double.infinity : null,
-      color: backgroundColor ?? primaryColor,
       constraints: const BoxConstraints(minHeight: MIN_HEIGHT),
+      decoration: BoxDecoration(
+        color: backgroundColor ?? primaryColor,
+        boxShadow: &lt;BoxShadow&gt;[
+          BoxShadow(
+            color: Colors.black.withOpacity(0.2),
+            blurRadius: 5.0,
+          ),
+        ],
+      ),
       padding: EdgeInsetsDirectional.only(
         start: (prefix?.requiresPadding == true ? 0 : VERY_LARGE_SPACE),
         top: VERY_SMALL_SPACE,

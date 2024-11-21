@@ -128,13 +128,16 @@ Widget build(BuildContext context) {
 
       &#47;&#47; If there is not enough space, we use the scrolling sheet
       final T? res;
-      final SmoothModalSheetHeader header =
-          SmoothModalSheetHeader(title: title);
+      final SmoothModalSheetHeader header = SmoothModalSheetHeader(
+        title: title,
+        prefix: const SmoothModalSheetHeaderPrefixIndicator(),
+      );
+
       if ((itemHeight * labels.length + header.computeHeight(context)) &gt;
           (queryData.size.height * 0.9) - queryData.viewPadding.top) {
         res = await showSmoothDraggableModalSheet&lt;T&gt;(
             context: context,
-            header: SmoothModalSheetHeader(title: title),
+            header: header,
             bodyBuilder: (BuildContext context) {
               return SliverList(
                 delegate: SliverChildBuilderDelegate(
@@ -161,6 +164,7 @@ Widget build(BuildContext context) {
       } else {
         final SmoothModalSheet smoothModalSheet = SmoothModalSheet(
           title: title,
+          prefixIndicator: true,
           bodyPadding: EdgeInsets.zero,
           body: SizedBox(
             height: itemHeight * labels.length,

@@ -121,8 +121,10 @@ Future&lt;void&gt; upload() async {
     }
     throw Exception(
       &#39;Could not save product - API V2&#39;
-      &#39; - &#39;
-      &#39;status=${status.status} - errors=${status.error} ${isInvalidUser ? _getIncompleteUserData() : &#39;&#39;}&#39;,
+      &#39; - status=${status.status}&#39;
+      &#39; - errors=${status.error}&#39;
+      &#39; - status_verbose=${status.statusVerbose}&#39;
+      &#39; ${isInvalidUser ? _getIncompleteUserData() : &#39;&#39;}&#39;,
     );
   }
 }</code></pre>
