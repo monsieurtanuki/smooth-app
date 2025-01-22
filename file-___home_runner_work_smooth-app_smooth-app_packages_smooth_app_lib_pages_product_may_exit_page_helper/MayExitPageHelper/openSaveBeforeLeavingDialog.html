@@ -53,7 +53,8 @@
 
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span>&gt;</span></span>
 <span class="name ">openSaveBeforeLeavingDialog</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="openSaveBeforeLeavingDialog-param-context"><span class="type-annotation">dynamic</span> <span class="parameter-name">context</span>, </span></li>
-<li><span class="parameter" id="openSaveBeforeLeavingDialog-param-title">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">title</span>}</span></li>
+<li><span class="parameter" id="openSaveBeforeLeavingDialog-param-title">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">title</span>, </span></li>
+<li><span class="parameter" id="openSaveBeforeLeavingDialog-param-unfocus"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">unfocus</span> = <span class="default-value">true</span>}</span></li>
 </ol>)
 
       
@@ -77,32 +78,37 @@
   <pre class="language-dart"><code class="language-dart">Future&lt;bool?&gt; openSaveBeforeLeavingDialog(
   final BuildContext context, {
   final String? title,
-}) async =&gt;
-    showDialog&lt;bool&gt;(
-      context: context,
-      builder: (final BuildContext context) {
-        final AppLocalizations appLocalizations =
-            AppLocalizations.of(context);
-        return SmoothAlertDialog(
-          close: true,
-          actionsAxis: Axis.vertical,
-          body:
-              Text(appLocalizations.edit_product_form_item_exit_confirmation),
-          title: title ?? appLocalizations.edit_product_label,
-          negativeAction: SmoothActionButton(
-            text: appLocalizations
-                .edit_product_form_item_exit_confirmation_negative_button,
-            onPressed: () =&gt; Navigator.pop(context, false),
-          ),
-          positiveAction: SmoothActionButton(
-            text: appLocalizations
-                .edit_product_form_item_exit_confirmation_positive_button,
-            onPressed: () =&gt; Navigator.pop(context, true),
-          ),
-          actionsOrder: SmoothButtonsBarOrder.numerical,
-        );
-      },
-    );</code></pre>
+  final bool unfocus = true,
+}) async {
+  if (unfocus) {
+    FocusManager.instance.primaryFocus?.unfocus();
+  }
+
+  final AppLocalizations appLocalizations = AppLocalizations.of(context);
+  final SmoothColorsThemeExtension extension =
+      context.extension&lt;SmoothColorsThemeExtension&gt;();
+
+  return showSmoothAlertModalSheet&lt;bool&gt;(
+    context: context,
+    title: title ?? appLocalizations.edit_product_form_item_exit_title,
+    message: Text(appLocalizations.edit_product_form_item_exit_confirmation),
+    type: SmoothModalSheetType.error,
+    actionLabels: &lt;String&gt;[
+      appLocalizations
+          .edit_product_form_item_exit_confirmation_positive_button,
+      appLocalizations
+          .edit_product_form_item_exit_confirmation_negative_button,
+    ],
+    actionIcons: &lt;Widget&gt;[
+      Icon(Icons.save_rounded, color: extension.success),
+      Icon(Icons.cancel_rounded, color: extension.error),
+    ],
+    actionValues: &lt;bool&gt;[
+      true,
+      false,
+    ],
+  );
+}</code></pre>
 </section>
 
 

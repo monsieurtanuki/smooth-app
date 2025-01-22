@@ -125,7 +125,7 @@
               ? Colors.white
               : myColorScheme.onPrimary,
         ),
-        iconColor: WidgetStateProperty.all&lt;Color&gt;(Colors.white),
+        iconColor: WidgetStateProperty.all&lt;Color&gt;(myColorScheme.onPrimary),
       ),
     ),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
@@ -139,7 +139,11 @@
       systemOverlayStyle: SystemUiOverlayStyle.light,
       titleTextStyle: textTheme.titleLarge,
     ),
-    dividerColor: const Color(0xFFdfdfdf),
+    dividerTheme: const DividerThemeData(
+      color: Color(0xFFECECEC),
+      space: 1.0,
+    ),
+    dividerColor: const Color(0xFFDFDFDF),
     inputDecorationTheme: InputDecorationTheme(
       fillColor: myColorScheme.secondary,
     ),
@@ -152,6 +156,7 @@
         fontWeight: FontWeight.w500,
       ),
       actionTextColor: Colors.white,
+      actionBackgroundColor: smoothExtension.primaryDark,
       backgroundColor: smoothExtension.primaryBlack,
     ),
     bannerTheme: MaterialBannerThemeData(

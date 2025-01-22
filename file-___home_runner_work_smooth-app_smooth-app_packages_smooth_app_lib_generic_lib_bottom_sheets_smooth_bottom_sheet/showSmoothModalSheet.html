@@ -55,7 +55,9 @@
 <span class="name ">showSmoothModalSheet</span>&lt;<wbr><span class="type-parameter">T</span>&gt;(<wbr><ol class="parameter-list"><li><span class="parameter" id="showSmoothModalSheet-param-context">{<span>required</span> <span class="type-annotation">dynamic</span> <span class="parameter-name">context</span>, </span></li>
 <li><span class="parameter" id="showSmoothModalSheet-param-builder"><span>required</span> <span class="type-annotation">dynamic</span> <span class="parameter-name">builder</span>, </span></li>
 <li><span class="parameter" id="showSmoothModalSheet-param-minHeight"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">minHeight</span>, </span></li>
-<li><span class="parameter" id="showSmoothModalSheet-param-maxHeight"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">maxHeight</span>}</span></li>
+<li><span class="parameter" id="showSmoothModalSheet-param-maxHeight"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">maxHeight</span>, </span></li>
+<li><span class="parameter" id="showSmoothModalSheet-param-isScrollControlled"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">isScrollControlled</span>, </span></li>
+<li><span class="parameter" id="showSmoothModalSheet-param-useRootNavigator"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">useRootNavigator</span>}</span></li>
 </ol>)
 
     </section>
@@ -70,6 +72,8 @@
   required WidgetBuilder builder,
   double? minHeight,
   double? maxHeight,
+  bool? isScrollControlled,
+  bool? useRootNavigator,
 }) {
   BoxConstraints? constraints;
 
@@ -91,12 +95,13 @@
 
   return showModalBottomSheet&lt;T&gt;(
     constraints: constraints,
-    isScrollControlled: minHeight != null,
+    isScrollControlled: isScrollControlled ?? minHeight != null,
     context: context,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: ROUNDED_RADIUS),
     ),
     builder: builder,
+    useRootNavigator: useRootNavigator ?? false,
     useSafeArea: true,
   );
 }</code></pre>
@@ -124,6 +129,7 @@
   <li class="section-title"><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_generic_lib_bottom_sheets_smooth_bottom_sheet/file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_generic_lib_bottom_sheets_smooth_bottom_sheet-library.html#classes">Classes</a></li>
   <li><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_generic_lib_bottom_sheets_smooth_bottom_sheet/SizeWidget-class.html">SizeWidget</a></li>
   <li><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_generic_lib_bottom_sheets_smooth_bottom_sheet/SmoothModalSheet-class.html">SmoothModalSheet</a></li>
+  <li><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_generic_lib_bottom_sheets_smooth_bottom_sheet/SmoothModalSheetBodyContainer-class.html">SmoothModalSheetBodyContainer</a></li>
   <li><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_generic_lib_bottom_sheets_smooth_bottom_sheet/SmoothModalSheetHeader-class.html">SmoothModalSheetHeader</a></li>
   <li><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_generic_lib_bottom_sheets_smooth_bottom_sheet/SmoothModalSheetHeaderButton-class.html">SmoothModalSheetHeaderButton</a></li>
   <li><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_generic_lib_bottom_sheets_smooth_bottom_sheet/SmoothModalSheetHeaderCloseButton-class.html">SmoothModalSheetHeaderCloseButton</a></li>
@@ -134,10 +140,14 @@
 
 
   <li class="section-title"><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_generic_lib_bottom_sheets_smooth_bottom_sheet/file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_generic_lib_bottom_sheets_smooth_bottom_sheet-library.html#functions">Functions</a></li>
+  <li><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_generic_lib_bottom_sheets_smooth_bottom_sheet/showSmoothAlertModalSheet.html">showSmoothAlertModalSheet</a></li>
   <li><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_generic_lib_bottom_sheets_smooth_bottom_sheet/showSmoothDraggableModalSheet.html">showSmoothDraggableModalSheet</a></li>
   <li><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_generic_lib_bottom_sheets_smooth_bottom_sheet/showSmoothListOfChoicesModalSheet.html">showSmoothListOfChoicesModalSheet</a></li>
   <li><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_generic_lib_bottom_sheets_smooth_bottom_sheet/showSmoothModalSheet.html">showSmoothModalSheet</a></li>
+  <li><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_generic_lib_bottom_sheets_smooth_bottom_sheet/showSmoothModalSheetForTextField.html">showSmoothModalSheetForTextField</a></li>
 
+  <li class="section-title"><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_generic_lib_bottom_sheets_smooth_bottom_sheet/file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_generic_lib_bottom_sheets_smooth_bottom_sheet-library.html#enums">Enums</a></li>
+  <li><a href="../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_generic_lib_bottom_sheets_smooth_bottom_sheet/SmoothModalSheetType.html">SmoothModalSheetType</a></li>
 
 
 </ol>

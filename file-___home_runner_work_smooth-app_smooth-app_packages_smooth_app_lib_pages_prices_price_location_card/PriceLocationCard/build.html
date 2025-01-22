@@ -74,57 +74,61 @@ Widget build(BuildContext context) {
   final PriceModel model = context.watch&lt;PriceModel&gt;();
   final AppLocalizations appLocalizations = AppLocalizations.of(context);
   final OsmLocation? location = model.location;
-  return SmoothCard(
-    child: Column(
-      children: &lt;Widget&gt;[
-        Text(appLocalizations.prices_location_subtitle),
-        SmoothLargeButtonWithIcon(
-          text: location == null
-              ? appLocalizations.prices_location_find
-              : location.getTitle() ??
-                  location.getSubtitle() ??
-                  location.getLatLng().toString(),
-          icon: location == null
-              ? Icons.shopping_cart
-              : PriceButton.locationIconData,
-          onPressed: model.proof != null
-              ? null
-              : () async {
-                  final LocalDatabase localDatabase =
-                      context.read&lt;LocalDatabase&gt;();
-                  final List&lt;SearchLocationPreloadedItem&gt; preloadedList =
-                      &lt;SearchLocationPreloadedItem&gt;[];
-                  for (final OsmLocation osmLocation in model.locations!) {
-                    preloadedList.add(
-                      SearchLocationPreloadedItem(
-                        osmLocation,
-                        popFirst: false,
-                      ),
-                    );
-                  }
-                  final OsmLocation? osmLocation =
-                      await Navigator.push&lt;OsmLocation&gt;(
-                    context,
-                    MaterialPageRoute&lt;OsmLocation&gt;(
-                      builder: (BuildContext context) =&gt; SearchPage(
-                        SearchLocationHelper(),
-                        preloadedList: preloadedList,
-                        autofocus: false,
-                      ),
-                    ),
-                  );
-                  if (osmLocation == null) {
-                    return;
-                  }
-                  final DaoOsmLocation daoOsmLocation =
-                      DaoOsmLocation(localDatabase);
-                  await daoOsmLocation.put(osmLocation);
-                  final List&lt;OsmLocation&gt; newOsmLocations =
-                      await daoOsmLocation.getAll();
-                  model.locations = newOsmLocations;
-                },
-        ),
-      ],
+
+  return SmoothCardWithRoundedHeader(
+    title: appLocalizations.prices_location_subtitle,
+    leading: const Icon(Icons.shopping_cart),
+    contentPadding: const EdgeInsetsDirectional.symmetric(
+      horizontal: SMALL_SPACE,
+      vertical: MEDIUM_SPACE,
+    ),
+    child: SmoothLargeButtonWithIcon(
+      text: location == null
+          ? appLocalizations.prices_location_find
+          : location.getTitle() ??
+              location.getSubtitle() ??
+              location.getLatLng().toString(),
+      leadingIcon: location == null
+          ? const Icon(Icons.shopping_cart)
+          : const Icon(PriceButton.locationIconData),
+      onPressed: model.proof != null
+          ? null
+          : () async {
+              final LocalDatabase localDatabase =
+                  context.read&lt;LocalDatabase&gt;();
+              final List&lt;SearchLocationPreloadedItem&gt; preloadedList =
+                  &lt;SearchLocationPreloadedItem&gt;[];
+              for (final OsmLocation osmLocation in model.locations!) {
+                preloadedList.add(
+                  SearchLocationPreloadedItem(
+                    osmLocation,
+                    popFirst: false,
+                  ),
+                );
+              }
+              final OsmLocation? osmLocation =
+                  await Navigator.push&lt;OsmLocation&gt;(
+                context,
+                MaterialPageRoute&lt;OsmLocation&gt;(
+                  builder: (BuildContext context) =&gt; SearchPage(
+                    SearchLocationHelper(),
+                    preloadedList: preloadedList,
+                    autofocus: false,
+                  ),
+                ),
+              );
+              if (osmLocation == null) {
+                return;
+              }
+              final DaoOsmLocation daoOsmLocation =
+                  DaoOsmLocation(localDatabase);
+              await daoOsmLocation.put(osmLocation);
+              final List&lt;OsmLocation&gt; newOsmLocations =
+                  await daoOsmLocation.getAll();
+              model.locations = newOsmLocations;
+
+              onLocationChanged.call(location, model.location!);
+            },
     ),
   );
 }</code></pre>
@@ -155,10 +159,11 @@ Widget build(BuildContext context) {
           <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_pages_prices_price_location_card/PriceLocationCard/PriceLocationCard.html">PriceLocationCard</a></li>
 
 
-    <li class="section-title inherited">
+    <li class="section-title">
       <a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_pages_prices_price_location_card/PriceLocationCard-class.html#instance-properties">Properties</a>
     </li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
+    <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_pages_prices_price_location_card/PriceLocationCard/onLocationChanged.html">onLocationChanged</a></li>
     <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
 
     <li class="section-title"><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_pages_prices_price_location_card/PriceLocationCard-class.html#instance-methods">Methods</a></li>
