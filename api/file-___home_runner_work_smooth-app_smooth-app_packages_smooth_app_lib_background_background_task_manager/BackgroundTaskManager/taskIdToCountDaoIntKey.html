@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the removeTaskAsap method from the BackgroundTaskManager class, for the Dart programming language.">
-  <title>removeTaskAsap method - BackgroundTaskManager class - background_task_manager library - Dart API</title>
+  <meta name="description" content="API docs for the taskIdToCountDaoIntKey method from the BackgroundTaskManager class, for the Dart programming language.">
+  <title>taskIdToCountDaoIntKey method - BackgroundTaskManager class - background_task_manager library - Dart API</title>
 
 
   
@@ -31,9 +31,9 @@
     <li><a href="../../index.html">smooth_app</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_background_background_task_manager/file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_background_background_task_manager-library.html">background_task_manager</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_background_background_task_manager/BackgroundTaskManager-class.html">BackgroundTaskManager</a></li>
-    <li class="self-crumb">removeTaskAsap method</li>
+    <li class="self-crumb">taskIdToCountDaoIntKey method</li>
   </ol>
-  <div class="self-name">removeTaskAsap</div>
+  <div class="self-name">taskIdToCountDaoIntKey</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -44,15 +44,15 @@
 
   <div id="dartdoc-main-content" class="main-content">
       <div>
-<h1><span class="kind-method">removeTaskAsap</span> method 
+<h1><span class="kind-method">taskIdToCountDaoIntKey</span> method 
     <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
     <section class="multi-line-signature">
       
 
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>&gt;</span></span>
-<span class="name ">removeTaskAsap</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="removeTaskAsap-param-taskId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">taskId</span></span></li>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+<span class="name ">taskIdToCountDaoIntKey</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="taskIdToCountDaoIntKey-param-taskId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">taskId</span></span></li>
 </ol>)
 
       
@@ -60,27 +60,15 @@
     </section>
     
 <section class="desc markdown">
-  <p>Removes a task ASAP.</p>
-<p>Returns true if managed to remove the task immediately.
-Returns false if the task will be removed next time it's possible.</p>
+  <p>Returns <a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_database_dao_int/DaoInt-class.html">DaoInt</a> key for count of task failures.</p>
 </section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;bool&gt; removeTaskAsap(final String taskId) async {
-  final String? status = DaoInstantString(
-    localDatabase,
-  ).get(taskIdToErrorDaoInstantStringKey(taskId));
-  if (status == taskStatusStarted) {
-    &#47;&#47; that value will be detected later
-    await _setTaskErrorStatus(taskId, taskStatusStopAsap);
-    return false;
-  }
-  await _finishTask(taskId);
-  return true;
-}</code></pre>
+  <pre class="language-dart"><code class="language-dart">static String taskIdToCountDaoIntKey(final String taskId) =&gt;
+    &#39;taskCount:$taskId&#39;;</code></pre>
 </section>
 
 
@@ -97,7 +85,7 @@ Returns false if the task will be removed next time it's possible.</p>
   <li><a href="../../index.html">smooth_app</a></li>
   <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_background_background_task_manager/file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_background_background_task_manager-library.html">background_task_manager</a></li>
   <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_background_background_task_manager/BackgroundTaskManager-class.html">BackgroundTaskManager</a></li>
-  <li class="self-crumb">removeTaskAsap method</li>
+  <li class="self-crumb">taskIdToCountDaoIntKey method</li>
 </ol>
 
 
