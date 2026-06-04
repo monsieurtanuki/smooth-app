@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the getCards method from the FaqRoot class, for the Dart programming language.">
-  <title>getCards method - FaqRoot class - faq_root library - Dart API</title>
+  <meta name="description" content="API docs for the createOpfLeadingIcon method from the FaqRoot class, for the Dart programming language.">
+  <title>createOpfLeadingIcon method - FaqRoot class - faq_root library - Dart API</title>
 
 
   
@@ -31,9 +31,9 @@
     <li><a href="../../index.html">smooth_app</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_pages_preferences_v2_roots_faq_root/file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_pages_preferences_v2_roots_faq_root-library.html">faq_root</a></li>
     <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_pages_preferences_v2_roots_faq_root/FaqRoot-class.html">FaqRoot</a></li>
-    <li class="self-crumb">getCards method</li>
+    <li class="self-crumb">createOpfLeadingIcon method</li>
   </ol>
-  <div class="self-name">getCards</div>
+  <div class="self-name">createOpfLeadingIcon</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -44,20 +44,16 @@
 
   <div id="dartdoc-main-content" class="main-content">
       <div>
-<h1><span class="kind-method">getCards</span> method 
+<h1><span class="kind-method">createOpfLeadingIcon</span> method 
     <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
     <section class="multi-line-signature">
       
-<div>
-  <ol class="annotation-list">
-    <li>@<a href="https://api.flutter.dev/flutter/dart-core/override-constant.html">override</a></li>
-  </ol>
-</div>
 
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a></span>
-<span class="name ">getCards</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getCards-param-context"><span class="type-annotation">dynamic</span> <span class="parameter-name">context</span></span></li>
+<span class="returntype">dynamic</span>
+<span class="name ">createOpfLeadingIcon</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="createOpfLeadingIcon-param-lightTheme"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">lightTheme</span>, </span></li>
+<li><span class="parameter" id="createOpfLeadingIcon-param-padding">{<span class="type-annotation">dynamic</span> <span class="parameter-name">padding</span>}</span></li>
 </ol>)
 
       
@@ -69,43 +65,13 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">@override
-List&lt;PreferenceCard&gt; getCards(BuildContext context) {
-  final AppLocalizations appLocalizations = AppLocalizations.of(context);
-  final bool lightTheme = context.lightTheme();
-
-  return &lt;PreferenceCard&gt;[
-    PreferenceCard(
-      title: appLocalizations.preferences_faq_scores_methodologies_title,
-      tiles: &lt;PreferenceTile&gt;[
-        _buildNutriscoreTile(appLocalizations),
-        _buildNutriscoreV2Tile(context, appLocalizations),
-        _buildGreenScoreTile(context, appLocalizations),
-        _buildNovaTile(context, appLocalizations),
-        _buildTrafficLightsTile(appLocalizations),
-      ],
-    ),
-    PreferenceCard(
-      title: appLocalizations.preferences_faq_discover_project_title,
-      tiles: &lt;PreferenceTile&gt;[
-        _buildDiscoverOffTile(context, appLocalizations, lightTheme),
-        _buildDiscoverObfTile(context, appLocalizations, lightTheme),
-        _buildDiscoverOpffTile(context, appLocalizations, lightTheme),
-        _buildDiscoverOpfTile(context, appLocalizations, lightTheme),
-        _buildDiscoverOpTile(context, appLocalizations, lightTheme),
-        _buildHowToContributeTile(appLocalizations),
-        _buildFaqTile(appLocalizations),
-      ],
-    ),
-    PreferenceCard(
-      title: appLocalizations.preferences_faq_off_ngo_title,
-      tiles: &lt;PreferenceTile&gt;[
-        _buildPartnersTile(appLocalizations),
-        _buildVisionTile(appLocalizations),
-      ],
-    ),
-  ];
-}</code></pre>
+  <pre class="language-dart"><code class="language-dart">static Widget createOpfLeadingIcon(
+  bool lightTheme, {
+  EdgeInsetsGeometry? padding,
+}) =&gt; _createLeadingIcon(
+  &#39;assets&#47;guides&#47;open_products_facts&#47;thumb_${lightTheme ? &#39;light&#39; : &#39;dark&#39;}.svg.vec&#39;,
+  padding: padding,
+);</code></pre>
 </section>
 
 
@@ -122,7 +88,7 @@ List&lt;PreferenceCard&gt; getCards(BuildContext context) {
   <li><a href="../../index.html">smooth_app</a></li>
   <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_pages_preferences_v2_roots_faq_root/file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_pages_preferences_v2_roots_faq_root-library.html">faq_root</a></li>
   <li><a href="../../file-___home_runner_work_smooth-app_smooth-app_packages_smooth_app_lib_pages_preferences_v2_roots_faq_root/FaqRoot-class.html">FaqRoot</a></li>
-  <li class="self-crumb">getCards method</li>
+  <li class="self-crumb">createOpfLeadingIcon method</li>
 </ol>
 
 
