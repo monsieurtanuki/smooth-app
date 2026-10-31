@@ -197,6 +197,18 @@
 
 </dd>
 
+        <dt id="donationStripHiddenUntil" class="property">
+  <span class="name"><a href="../data_models_preferences_user_preferences/UserPreferences/donationStripHiddenUntil.html">donationStripHiddenUntil</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a>?</span>
+  
+
+</dt>
+<dd>
+  
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
         <dt id="forMeAttributesFilterType" class="property">
   <span class="name"><a href="../data_models_preferences_user_preferences/UserPreferences/forMeAttributesFilterType.html">forMeAttributesFilterType</a></span>
   <span class="signature">&#8594; <a href="../pages_product_product_page_tabs_for_me_attributes_filters_product_for_me_collection/ForMeAttributesFilterType.html">ForMeAttributesFilterType</a>?</span>
@@ -260,6 +272,30 @@
         <dt id="languagesUsage" class="property">
   <span class="name"><a href="../data_models_preferences_user_preferences/UserPreferences/languagesUsage.html">languagesUsage</a></span>
   <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span></span>
+  
+
+</dt>
+<dd>
+  
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+        <dt id="lastCountedBarcode" class="property">
+  <span class="name"><a href="../data_models_preferences_user_preferences/UserPreferences/lastCountedBarcode.html">lastCountedBarcode</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>
+  
+
+</dt>
+<dd>
+  
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+        <dt id="lastReminderShownAt" class="property">
+  <span class="name"><a href="../data_models_preferences_user_preferences/UserPreferences/lastReminderShownAt.html">lastReminderShownAt</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a>?</span>
   
 
 </dt>
@@ -356,6 +392,18 @@
         <dt id="productPageTabs" class="property">
   <span class="name"><a href="../data_models_preferences_user_preferences/UserPreferences/productPageTabs.html">productPageTabs</a></span>
   <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
+  
+
+</dt>
+<dd>
+  
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+        <dt id="productsLookedUpSinceAsk" class="property">
+  <span class="name"><a href="../data_models_preferences_user_preferences/UserPreferences/productsLookedUpSinceAsk.html">productsLookedUpSinceAsk</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
   
 
 </dt>
@@ -580,6 +628,21 @@
 
 </dd>
 
+        <dt id="countProductLookedUp" class="callable">
+  <span class="name"><a href="../data_models_preferences_user_preferences/UserPreferences/countProductLookedUp.html">countProductLookedUp</a></span><span class="signature">(<wbr><span class="parameter" id="countProductLookedUp-param-barcode"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">barcode</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  No-op for the barcode the page before it already counted. Both values
+are written before the first <code>await</code>, so a caller that reads them right
+after, without awaiting, already sees the new count and barcode.
+  
+
+</dd>
+
         <dt id="dispose" class="callable inherited">
   <span class="name"><a href="https://api.flutter.dev/flutter/foundation/ChangeNotifier/dispose.html">dispose</a></span><span class="signature">(<wbr>)
     <span class="returntype parameter">&#8594; void</span>
@@ -606,6 +669,19 @@
 
 </dd>
 
+        <dt id="donationStripHidden" class="callable">
+  <span class="name"><a href="../data_models_preferences_user_preferences/UserPreferences/donationStripHidden.html">donationStripHidden</a></span><span class="signature">(<wbr><span class="parameter" id="donationStripHidden-param-now"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">now</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  
+  
+
+</dd>
+
         <dt id="getDevModeString" class="callable">
   <span class="name"><a href="../data_models_preferences_user_preferences/UserPreferences/getDevModeString.html">getDevModeString</a></span><span class="signature">(<wbr><span class="parameter" id="getDevModeString-param-tag"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">tag</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>
@@ -615,6 +691,19 @@
 </dt>
 <dd>
   
+  
+
+</dd>
+
+        <dt id="getDonationTestBucket" class="callable">
+  <span class="name"><a href="../data_models_preferences_user_preferences/UserPreferences/getDonationTestBucket.html">getDonationTestBucket</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  This install's draw in 0..99, made once and kept.
   
 
 </dd>
@@ -751,6 +840,19 @@ Use this when making API calls that require canonical tags.
 
 </dd>
 
+        <dt id="hideDonationStrip" class="callable">
+  <span class="name"><a href="../data_models_preferences_user_preferences/UserPreferences/hideDonationStrip.html">hideDonationStrip</a></span><span class="signature">(<wbr><span class="parameter" id="hideDonationStrip-param-duration"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Duration-class.html">Duration</a></span> <span class="parameter-name">duration</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  
+  
+
+</dd>
+
         <dt id="hideFolksonomyExplanationCard" class="callable">
   <span class="name"><a href="../data_models_preferences_user_preferences/UserPreferences/hideFolksonomyExplanationCard.html">hideFolksonomyExplanationCard</a></span><span class="signature">(<wbr>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
@@ -818,6 +920,19 @@ Use this when making API calls that require canonical tags.
 
         <dt id="init" class="callable">
   <span class="name"><a href="../data_models_preferences_user_preferences/UserPreferences/init.html">init</a></span><span class="signature">(<wbr><span class="parameter" id="init-param-productPreferences"><span class="type-annotation"><a href="../data_models_product_preferences/ProductPreferences-class.html">ProductPreferences</a></span> <span class="parameter-name">productPreferences</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  
+  
+
+</dd>
+
+        <dt id="markDonationReminderShown" class="callable">
+  <span class="name"><a href="../data_models_preferences_user_preferences/UserPreferences/markDonationReminderShown.html">markDonationReminderShown</a></span><span class="signature">(<wbr>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
   </span>
   
