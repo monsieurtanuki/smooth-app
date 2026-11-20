@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the photo_viewer_copy_url property from the AppLocalizations class, for the Dart programming language.">
-  <title>photo_viewer_copy_url property - AppLocalizations class - app_localizations library - Dart API</title>
+  <meta name="description" content="API docs for the hasNoNutritionData property from the ProductNutritionExtension extension, for the Dart programming language.">
+  <title>hasNoNutritionData property - ProductNutritionExtension extension - product_nutrition_extension library - Dart API</title>
 
 
   
@@ -25,11 +25,11 @@
   <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">smooth_app</a></li>
-    <li><a href="../../l10n_app_localizations/">l10n&#47;app_localizations.dart</a></li>
-    <li><a href="../../l10n_app_localizations/AppLocalizations-class.html">AppLocalizations</a></li>
-    <li class="self-crumb">photo_viewer_copy_url property</li>
+    <li><a href="../../helpers_product_nutrition_extension/">helpers&#47;product_nutrition_extension.dart</a></li>
+    <li><a href="../../helpers_product_nutrition_extension/ProductNutritionExtension.html">ProductNutritionExtension</a></li>
+    <li class="self-crumb">hasNoNutritionData property</li>
   </ol>
-  <div class="self-name">photo_viewer_copy_url</div>
+  <div class="self-name">hasNoNutritionData</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -46,10 +46,10 @@
 <div
     id="dartdoc-main-content"
     class="main-content"
-    data-above-sidebar="l10n_app_localizations&#47;AppLocalizations-class-sidebar.html"
+    data-above-sidebar="helpers_product_nutrition_extension&#47;ProductNutritionExtension-extension-sidebar.html"
     data-below-sidebar="">
     <div>
-<h1><span class="kind-property">photo_viewer_copy_url</span> property 
+<h1><span class="kind-property">hasNoNutritionData</span> property 
 </h1></div>
 
     
@@ -59,23 +59,21 @@
   <section id="getter">
     <section class="multi-line-signature">
       
-      <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+      <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
       get
-      <span class="name ">photo_viewer_copy_url</span>
+      <span class="name ">hasNoNutritionData</span>
       
 
     </section>
     
-<section class="desc markdown">
-  <p>Tooltip of the button on the full size photo page that copies the URL of the full size photo to the clipboard</p>
-<p>In en, this message translates to:
-<strong>'Copy the photo URL'</strong></p>
-</section>
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">String get photo_viewer_copy_url;</code></pre>
+  <pre class="language-dart"><code class="language-dart">bool get hasNoNutritionData =&gt;
+    noNutritionData ??
+    NutritionHelper().getNoNutritionDataOnPackaging(this) ??
+    false;</code></pre>
 </section>
 
   </section>
@@ -91,12 +89,12 @@
 </header>
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
     <li><a href="../../index.html">smooth_app</a></li>
-    <li><a href="../../l10n_app_localizations/">app_localizations</a></li>
-    <li><a href="../../l10n_app_localizations/AppLocalizations-class.html">AppLocalizations</a></li>
-    <li class="self-crumb">photo_viewer_copy_url property</li>
+    <li><a href="../../helpers_product_nutrition_extension/">product_nutrition_extension</a></li>
+    <li><a href="../../helpers_product_nutrition_extension/ProductNutritionExtension.html">ProductNutritionExtension</a></li>
+    <li class="self-crumb">hasNoNutritionData property</li>
 </ol>
 
-  <h5>AppLocalizations class</h5>
+  <h5>ProductNutritionExtension extension on <a href="https://pub.dev/documentation/openfoodfacts/3.32.0/openfoodfacts/Product-class.html">Product</a></h5>
   <div id="dartdoc-sidebar-left-content"></div>
 </div><!--/.sidebar-offcanvas-->
 <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">

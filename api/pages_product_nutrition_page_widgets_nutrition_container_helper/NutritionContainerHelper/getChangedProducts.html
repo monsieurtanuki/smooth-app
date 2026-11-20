@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the getChangedProduct method from the NutritionContainerHelper class, for the Dart programming language.">
-  <title>getChangedProduct method - NutritionContainerHelper class - nutrition_container_helper library - Dart API</title>
+  <meta name="description" content="API docs for the getChangedProducts method from the NutritionContainerHelper class, for the Dart programming language.">
+  <title>getChangedProducts method - NutritionContainerHelper class - nutrition_container_helper library - Dart API</title>
 
 
   
@@ -27,9 +27,9 @@
     <li><a href="../../index.html">smooth_app</a></li>
     <li><a href="../../pages_product_nutrition_page_widgets_nutrition_container_helper/">pages&#47;product&#47;nutrition_page&#47;widgets&#47;nutrition_container_helper.dart</a></li>
     <li><a href="../../pages_product_nutrition_page_widgets_nutrition_container_helper/NutritionContainerHelper-class.html">NutritionContainerHelper</a></li>
-    <li class="self-crumb">getChangedProduct method</li>
+    <li class="self-crumb">getChangedProducts method</li>
   </ol>
-  <div class="self-name">getChangedProduct</div>
+  <div class="self-name">getChangedProducts</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -49,13 +49,13 @@
     data-above-sidebar="pages_product_nutrition_page_widgets_nutrition_container_helper&#47;NutritionContainerHelper-class-sidebar.html"
     data-below-sidebar="">
     <div>
-<h1><span class="kind-method">getChangedProduct</span> method 
+<h1><span class="kind-method">getChangedProducts</span> method 
 </h1></div>
 
     <section class="multi-line-signature">
       
-<span class="returntype"><a href="https://pub.dev/documentation/openfoodfacts/3.30.2/openfoodfacts/Product-class.html">Product</a></span>
-<span class="name ">getChangedProduct</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="getChangedProduct-param-product"><span class="type-annotation"><a href="https://pub.dev/documentation/openfoodfacts/3.30.2/openfoodfacts/Product-class.html">Product</a></span> <span class="parameter-name">product</span></span></li>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/openfoodfacts/3.32.0/openfoodfacts/Product-class.html">Product</a></span>&gt;</span></span>
+<span class="name ">getChangedProducts</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="getChangedProducts-param-barcode"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">barcode</span></span></li>
 </ol>)
 
       
@@ -63,19 +63,33 @@
     </section>
     
 <section class="desc markdown">
-  <p>Returns a <a href="https://pub.dev/documentation/openfoodfacts/3.30.2/openfoodfacts/Product-class.html">Product</a> with changed nutrients data.</p>
+  <p>Returns the minimal products to save, with only the changed data.</p>
+<p>The nutrition values are saved in V3, which doesn't save the "no nutrition
+data" flag, hence a separate product.</p>
 </section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Product getChangedProduct(Product product) {
-  product.noNutritionData = _noNutritionData;
-  product.nutrimentDataPer = _perSize.offTag;
-  product.nutriments = _getNutriments();
-  product.servingSize = servingSize;
-  return product;
+  <pre class="language-dart"><code class="language-dart">List&lt;Product&gt; getChangedProducts(String barcode) {
+  final List&lt;Product&gt; result = &lt;Product&gt;[];
+  final Product nutritionProduct = Product(barcode: barcode);
+  final List&lt;NutritionSet&gt; changedSets = _getChangedSets();
+  if (changedSets.isNotEmpty) {
+    NutritionHelper().setInputSets(nutritionProduct, changedSets);
+  }
+  if (servingSize != _initialServingSize) {
+    nutritionProduct.servingSize = servingSize;
+  }
+  if (nutritionProduct.nutrition != null ||
+      nutritionProduct.servingSize != null) {
+    result.add(nutritionProduct);
+  }
+  if (_noNutritionData != _initialNoNutritionData) {
+    result.add(Product(barcode: barcode)..noNutritionData = _noNutritionData);
+  }
+  return result;
 }</code></pre>
 </section>
 
@@ -92,7 +106,7 @@
     <li><a href="../../index.html">smooth_app</a></li>
     <li><a href="../../pages_product_nutrition_page_widgets_nutrition_container_helper/">nutrition_container_helper</a></li>
     <li><a href="../../pages_product_nutrition_page_widgets_nutrition_container_helper/NutritionContainerHelper-class.html">NutritionContainerHelper</a></li>
-    <li class="self-crumb">getChangedProduct method</li>
+    <li class="self-crumb">getChangedProducts method</li>
 </ol>
 
     <h5>NutritionContainerHelper class</h5>
